@@ -1,11 +1,13 @@
+/* =========================================================
+   REALISTIC PINK WEDDING PRANK
+   Luxury Wedding Prank 2.0
+========================================================= */
+
 document.addEventListener("DOMContentLoaded", () => {
 
-    /* ==================================================
+    /* =====================================================
        ELEMENTS
-    =================================================== */
-
-    const loader =
-        document.getElementById("loader");
+    ===================================================== */
 
     const envelopeScreen =
         document.getElementById("envelopeScreen");
@@ -13,350 +15,185 @@ document.addEventListener("DOMContentLoaded", () => {
     const envelope =
         document.getElementById("envelope");
 
+    const openButton =
+        document.getElementById("openButton");
+
+    const mainContent =
+        document.getElementById("mainContent");
+
     const music =
         document.getElementById("weddingMusic");
 
     const musicButton =
         document.getElementById("musicButton");
 
-    const invitation =
-        document.getElementById("invitation");
+    const birthdayReveal =
+        document.getElementById("birthdayReveal");
 
-    const rsvpButton =
-        document.getElementById("rsvpButton");
+    const birthdayButton =
+        document.getElementById("birthdayButton");
 
-    const birthday =
-        document.getElementById("birthday");
-
-    const confetti =
-        document.getElementById("confetti");
-
-    const celebrateButton =
-        document.getElementById("celebrateButton");
-
-    const lastMessage =
-        document.getElementById("lastMessage");
-
-    const popup =
-        document.getElementById("popup");
+    const birthdayPopup =
+        document.getElementById("birthdayPopup");
 
     const closePopup =
         document.getElementById("closePopup");
 
+    const popupCelebrate =
+        document.getElementById("popupCelebrate");
 
-    /* ==================================================
-       LOADER
-       
-       IMPORTANT:
-       Loader does NOT wait for:
-       - images
-       - music
-       - fonts
-       
-       This prevents the previous loading problem.
-    =================================================== */
-
-    const hideLoader = () => {
-
-        if (!loader) {
-            return;
-        }
-
-        loader.classList.add(
-            "is-hidden"
-        );
-
-    };
+    const confettiContainer =
+        document.getElementById("confettiContainer");
 
 
-    setTimeout(
-        hideLoader,
-        1200
-    );
-
-
-    window.addEventListener(
-        "load",
-        hideLoader
-    );
-
-
-    /* ==================================================
-       LOCK PAGE UNTIL ENVELOPE IS OPENED
-    =================================================== */
-
-    document.body.classList.add(
-        "page-locked"
-    );
-
-
-    /* ==================================================
+    /* =====================================================
        NAME FROM URL
-       
-       Example:
-       
-       ?name=Amanda
-       
-       Result:
-       
-       HAPPY 31ST BIRTHDAY,
-       AMANDA
-    =================================================== */
 
-    const urlParams =
-        new URLSearchParams(
-            window.location.search
-        );
+       Example:
+       ?name=Andi
+
+       https://username.github.io/prank/?name=Andi
+    ===================================================== */
+
+    const params = new URLSearchParams(
+        window.location.search
+    );
 
     let friendName =
-        urlParams.get("name");
-
-
-    if (!friendName) {
-
-        friendName =
-            "BESTIE";
-
-    }
-
-
-    try {
-
-        friendName =
-            decodeURIComponent(
-                friendName
-            );
-
-    } catch (error) {
-
-        friendName =
-            "BESTIE";
-
-    }
-
+        params.get("name") || "BESTIE";
 
     friendName =
-        friendName
-            .replace(/\+/g, " ")
-            .trim()
-            .toUpperCase();
-
+        decodeURIComponent(friendName)
+        .replace(/[<>]/g, "")
+        .trim();
 
     if (!friendName) {
-
-        friendName =
-            "BESTIE";
-
+        friendName = "BESTIE";
     }
 
+    document
+        .querySelectorAll("#friendName, #popupName, .name-placeholder")
+        .forEach(element => {
 
-    const friendNameElement =
-        document.getElementById(
-            "friendName"
-        );
-
-    const letterNameElement =
-        document.getElementById(
-            "letterName"
-        );
+            element.textContent =
+                friendName;
+        });
 
 
-    if (friendNameElement) {
-
-        friendNameElement.textContent =
-            friendName;
-
-    }
-
-
-    if (letterNameElement) {
-
-        letterNameElement.textContent =
-            friendName;
-
-    }
-
-
-    /* ==================================================
-       ENVELOPE
-    =================================================== */
+    /* =====================================================
+       OPEN ENVELOPE
+    ===================================================== */
 
     let envelopeOpened = false;
 
+    function openInvitation() {
 
-    const openEnvelope = () => {
-
-        if (envelopeOpened) {
-            return;
-        }
+        if (envelopeOpened) return;
 
         envelopeOpened = true;
 
+        envelope.classList.add("open");
 
-        envelope.classList.add(
-            "open"
-        );
-
-
-        /* ----------------------------------------------
-           START MUSIC
-           
-           Browser may block autoplay,
-           but this is a user click,
-           so it normally works.
-        ---------------------------------------------- */
-
+        /* Start music after user interaction */
         startMusic();
 
-
-        /* ----------------------------------------------
-           OPEN INVITATION
-        ---------------------------------------------- */
-
+        /* Wait for envelope animation */
         setTimeout(() => {
 
-            envelopeScreen.classList.add(
-                "is-hidden"
-            );
+            envelopeScreen.classList.add("opened");
 
-            document.body.classList.remove(
-                "page-locked"
-            );
+            document.body.style.overflow = "auto";
+
+            mainContent.classList.remove("hidden");
 
             window.scrollTo({
                 top: 0,
                 behavior: "instant"
             });
 
-        }, 1350);
-
-    };
-
-
-    if (envelope) {
-
-        envelope.addEventListener(
-            "click",
-            openEnvelope
-        );
-
-
-        envelope.addEventListener(
-            "keydown",
-            (event) => {
-
-                if (
-                    event.key === "Enter" ||
-                    event.key === " "
-                ) {
-
-                    event.preventDefault();
-
-                    openEnvelope();
-
-                }
-
-            }
-        );
-
+        }, 1200);
     }
 
 
-    /* ==================================================
+    envelope.addEventListener(
+        "click",
+        openInvitation
+    );
+
+    openButton.addEventListener(
+        "click",
+        openInvitation
+    );
+
+
+    envelope.addEventListener(
+        "keydown",
+        event => {
+
+            if (
+                event.key === "Enter" ||
+                event.key === " "
+            ) {
+                event.preventDefault();
+                openInvitation();
+            }
+
+        }
+    );
+
+
+    /* =====================================================
        MUSIC
-    =================================================== */
+    ===================================================== */
 
     let musicPlaying = false;
 
+    function startMusic() {
 
-    const updateMusicButton = () => {
+        if (!music) return;
 
-        if (!musicButton) {
-            return;
-        }
+        music.volume = 0.45;
 
-
-        if (musicPlaying) {
-
-            musicButton.classList.remove(
-                "is-muted"
-            );
-
-        } else {
-
-            musicButton.classList.add(
-                "is-muted"
-            );
-
-        }
-
-    };
-
-
-    const startMusic = () => {
-
-        if (!music) {
-            return;
-        }
-
-
-        music.volume = 0.28;
-
-
-        const promise =
+        const playPromise =
             music.play();
 
-
         if (
-            promise &&
-            typeof promise.then === "function"
+            playPromise &&
+            typeof playPromise.catch === "function"
         ) {
-
-            promise
-                .then(() => {
-
-                    musicPlaying = true;
-
-                    updateMusicButton();
-
-                })
-                .catch(() => {
-
-                    musicPlaying = false;
-
-                    updateMusicButton();
-
-                });
-
+            playPromise.catch(() => {
+                /* Browser blocked autoplay.
+                   User can press music button. */
+            });
         }
 
-    };
+        musicPlaying = true;
+
+        musicButton.classList.add(
+            "playing"
+        );
+    }
 
 
-    const toggleMusic = () => {
+    function toggleMusic() {
 
-        if (!music) {
-            return;
-        }
-
+        if (!music) return;
 
         if (music.paused) {
+
+            music.volume = 0.45;
 
             music.play()
                 .then(() => {
 
                     musicPlaying = true;
 
-                    updateMusicButton();
+                    musicButton.classList.add(
+                        "playing"
+                    );
 
                 })
-                .catch(() => {
-
-                    musicPlaying = false;
-
-                    updateMusicButton();
-
-                });
+                .catch(() => {});
 
         } else {
 
@@ -364,56 +201,44 @@ document.addEventListener("DOMContentLoaded", () => {
 
             musicPlaying = false;
 
-            updateMusicButton();
-
+            musicButton.classList.remove(
+                "playing"
+            );
         }
-
-    };
-
-
-    if (musicButton) {
-
-        musicButton.addEventListener(
-            "click",
-            toggleMusic
-        );
-
     }
 
 
-    /* ==================================================
+    musicButton.addEventListener(
+        "click",
+        toggleMusic
+    );
+
+
+    /* =====================================================
        SCROLL REVEAL
-    =================================================== */
+    ===================================================== */
 
     const revealElements =
-        document.querySelectorAll(
-            ".reveal"
-        );
-
+        document.querySelectorAll(".reveal");
 
     const revealObserver =
         new IntersectionObserver(
-            (entries) => {
+            entries => {
 
-                entries.forEach(
-                    (entry) => {
+                entries.forEach(entry => {
 
-                        if (
-                            entry.isIntersecting
-                        ) {
+                    if (entry.isIntersecting) {
 
-                            entry.target.classList.add(
-                                "visible"
-                            );
+                        entry.target.classList.add(
+                            "visible"
+                        );
 
-                            revealObserver.unobserve(
-                                entry.target
-                            );
-
-                        }
-
+                        revealObserver.unobserve(
+                            entry.target
+                        );
                     }
-                );
+
+                });
 
             },
             {
@@ -422,159 +247,105 @@ document.addEventListener("DOMContentLoaded", () => {
         );
 
 
-    revealElements.forEach(
-        (element) => {
+    revealElements.forEach(element => {
 
-            revealObserver.observe(
-                element
-            );
+        revealObserver.observe(element);
 
-        }
-    );
+    });
 
 
-    /* ==================================================
+    /* =====================================================
        COUNTDOWN
-       
-       Wedding date:
-       12 September 2026
-    =================================================== */
+    ===================================================== */
 
     const weddingDate =
-        new Date(
-            "September 12, 2026 16:00:00"
-        ).getTime();
+        new Date("August 31, 2026 18:30:00").getTime();
 
 
-    const daysElement =
-        document.getElementById("days");
-
-    const hoursElement =
-        document.getElementById("hours");
-
-    const minutesElement =
-        document.getElementById("minutes");
-
-    const secondsElement =
-        document.getElementById("seconds");
-
-
-    const pad =
-        (number) =>
-            String(number).padStart(
-                2,
-                "0"
-            );
-
-
-    const updateCountdown = () => {
+    function updateCountdown() {
 
         const now =
-            Date.now();
+            new Date().getTime();
 
-        const difference =
+        const distance =
             weddingDate - now;
 
-
-        if (
-            difference <= 0
-        ) {
-
-            if (daysElement) {
-                daysElement.textContent =
-                    "00";
-            }
-
-            if (hoursElement) {
-                hoursElement.textContent =
-                    "00";
-            }
-
-            if (minutesElement) {
-                minutesElement.textContent =
-                    "00";
-            }
-
-            if (secondsElement) {
-                secondsElement.textContent =
-                    "00";
-            }
-
-            return;
-
-        }
-
-
         const days =
-            Math.floor(
-                difference /
-                (1000 * 60 * 60 * 24)
+            Math.max(
+                0,
+                Math.floor(
+                    distance /
+                    (1000 * 60 * 60 * 24)
+                )
             );
-
 
         const hours =
-            Math.floor(
-                (
-                    difference /
+            Math.max(
+                0,
+                Math.floor(
+                    (distance %
+                        (1000 * 60 * 60 * 24)) /
                     (1000 * 60 * 60)
-                ) % 24
+                )
             );
-
 
         const minutes =
-            Math.floor(
-                (
-                    difference /
+            Math.max(
+                0,
+                Math.floor(
+                    (distance %
+                        (1000 * 60 * 60)) /
                     (1000 * 60)
-                ) % 60
+                )
             );
-
 
         const seconds =
-            Math.floor(
-                (
-                    difference /
+            Math.max(
+                0,
+                Math.floor(
+                    (distance %
+                        (1000 * 60)) /
                     1000
-                ) % 60
+                )
             );
 
 
-        if (daysElement) {
+        setText(
+            "days",
+            String(days).padStart(2, "0")
+        );
 
-            daysElement.textContent =
-                pad(days);
+        setText(
+            "hours",
+            String(hours).padStart(2, "0")
+        );
 
+        setText(
+            "minutes",
+            String(minutes).padStart(2, "0")
+        );
+
+        setText(
+            "seconds",
+            String(seconds).padStart(2, "0")
+        );
+
+    }
+
+
+    function setText(id, value) {
+
+        const element =
+            document.getElementById(id);
+
+        if (element) {
+            element.textContent = value;
         }
 
-
-        if (hoursElement) {
-
-            hoursElement.textContent =
-                pad(hours);
-
-        }
-
-
-        if (minutesElement) {
-
-            minutesElement.textContent =
-                pad(minutes);
-
-        }
-
-
-        if (secondsElement) {
-
-            secondsElement.textContent =
-                pad(seconds);
-
-        }
-
-    };
+    }
 
 
     updateCountdown();
-
 
     setInterval(
         updateCountdown,
@@ -582,9 +353,13 @@ document.addEventListener("DOMContentLoaded", () => {
     );
 
 
-    /* ==================================================
-       RSVP
-    =================================================== */
+    /* =====================================================
+       RSVP BUTTON
+    ===================================================== */
+
+    const rsvpButton =
+        document.getElementById("rsvpButton");
+
 
     if (rsvpButton) {
 
@@ -592,10 +367,11 @@ document.addEventListener("DOMContentLoaded", () => {
             "click",
             () => {
 
-                showPopup(
-                    "RSVP RECEIVED",
-                    "Thank you for confirming your attendance. We can't wait to celebrate with you. ♡"
-                );
+                rsvpButton.textContent =
+                    "THANK YOU ♡";
+
+                rsvpButton.style.pointerEvents =
+                    "none";
 
             }
         );
@@ -603,270 +379,198 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    /* ==================================================
-       CONFETTI
-    =================================================== */
+    /* =====================================================
+       BIRTHDAY REVEAL OBSERVER
+    ===================================================== */
 
-    let confettiCreated = false;
+    let birthdayTriggered = false;
+
+    const birthdayObserver =
+        new IntersectionObserver(
+            entries => {
+
+                entries.forEach(entry => {
+
+                    if (
+                        entry.isIntersecting &&
+                        !birthdayTriggered
+                    ) {
+
+                        birthdayTriggered = true;
+
+                        triggerBirthdayReveal();
+
+                    }
+
+                });
+
+            },
+            {
+                threshold: 0.45
+            }
+        );
 
 
-    const confettiSymbols = [
-        "✦",
-        "✧",
-        "♡",
-        "❀",
-        "✿",
-        "★",
-        "•"
-    ];
+    if (birthdayReveal) {
+
+        birthdayObserver.observe(
+            birthdayReveal
+        );
+
+    }
 
 
-    const createConfetti = () => {
+    /* =====================================================
+       BIRTHDAY REVEAL
+    ===================================================== */
 
-        if (
-            confettiCreated ||
-            !confetti
-        ) {
+    function triggerBirthdayReveal() {
 
-            return;
+        /* Pause wedding music */
+        if (music && !music.paused) {
+
+            music.volume = 0.18;
 
         }
 
+        /* Confetti */
+        setTimeout(
+            createConfetti,
+            300
+        );
 
-        confettiCreated = true;
+        /* More confetti */
+        setTimeout(
+            createConfetti,
+            1800
+        );
+
+    }
 
 
-        const total =
-            window.innerWidth < 600
-                ? 85
-                : 150;
+    /* =====================================================
+       CONFETTI
+    ===================================================== */
 
+    function createConfetti() {
+
+        if (!confettiContainer) return;
+
+        const pieces = 90;
 
         for (
             let i = 0;
-            i < total;
+            i < pieces;
             i++
         ) {
 
             const piece =
-                document.createElement(
-                    "span"
-                );
-
+                document.createElement("span");
 
             piece.className =
-                "confetti-piece";
+                "confetti";
 
 
-            piece.textContent =
-                confettiSymbols[
+            const shapes = [
+                "4px",
+                "7px",
+                "10px"
+            ];
+
+            const size =
+                shapes[
                     Math.floor(
                         Math.random() *
-                        confettiSymbols.length
+                        shapes.length
                     )
                 ];
 
 
+            piece.style.width =
+                size;
+
+            piece.style.height =
+                `${Math.floor(
+                    Math.random() * 12 + 8
+                )}px`;
+
+
             piece.style.left =
-                (
-                    Math.random() *
-                    100
-                ) + "%";
-
-
-            piece.style.fontSize =
-                (
-                    8 +
-                    Math.random() * 17
-                ) + "px";
-
-
-            piece.style.opacity =
-                (
-                    .45 +
-                    Math.random() * .55
-                );
+                `${Math.random() * 100}%`;
 
 
             piece.style.setProperty(
-                "--drift",
-                (
-                    -100 +
-                    Math.random() * 200
-                ) + "px"
+                "--x",
+                `${(Math.random() - 0.5) * 300}px`
             );
 
 
             piece.style.animationDuration =
-                (
-                    3 +
-                    Math.random() * 4
-                ) + "s";
+                `${Math.random() * 2 + 3}s`;
 
 
             piece.style.animationDelay =
-                (
-                    Math.random() * 1.8
-                ) + "s";
+                `${Math.random() * 1.2}s`;
 
 
-            confetti.appendChild(
+            /*
+             * No fixed colors in CSS.
+             * We randomize a soft palette here.
+             */
+            const colors = [
+                "#d99da5",
+                "#b97882",
+                "#e8c9a8",
+                "#f5dede",
+                "#9f6971",
+                "#fff5e9"
+            ];
+
+            piece.style.background =
+                colors[
+                    Math.floor(
+                        Math.random() *
+                        colors.length
+                    )
+                ];
+
+
+            piece.style.borderRadius =
+                Math.random() > .5
+                    ? "50%"
+                    : "2px";
+
+
+            confettiContainer.appendChild(
                 piece
             );
 
-        }
 
-    };
-
-
-    /* ==================================================
-       BIRTHDAY OBSERVER
-    =================================================== */
-
-    if (birthday) {
-
-        const birthdayObserver =
-            new IntersectionObserver(
-                (entries) => {
-
-                    entries.forEach(
-                        (entry) => {
-
-                            if (
-                                entry.isIntersecting
-                            ) {
-
-                                createConfetti();
-
-                                birthdayObserver.unobserve(
-                                    birthday
-                                );
-
-                            }
-
-                        }
-                    );
-
-                },
-                {
-                    threshold: .25
-                }
+            setTimeout(
+                () => piece.remove(),
+                5500
             );
 
-
-        birthdayObserver.observe(
-            birthday
-        );
+        }
 
     }
 
 
-    /* ==================================================
-       POPUP
-    =================================================== */
+    /* =====================================================
+       BIRTHDAY POPUP
+    ===================================================== */
 
-    const showPopup = (
-        title,
-        message
-    ) => {
+    if (birthdayButton) {
 
-        if (!popup) {
-            return;
-        }
-
-
-        const popupTitle =
-            popup.querySelector(
-                "h2"
-            );
-
-        const popupParagraphs =
-            popup.querySelectorAll(
-                "p:not(.eyebrow)"
-            );
-
-
-        if (popupTitle && title) {
-
-            popupTitle.textContent =
-                title;
-
-        }
-
-
-        if (
-            message &&
-            popupParagraphs.length > 0
-        ) {
-
-            popupParagraphs[0].textContent =
-                message;
-
-        }
-
-
-        popup.classList.add(
-            "show"
-        );
-
-
-        popup.setAttribute(
-            "aria-hidden",
-            "false"
-        );
-
-    };
-
-
-    const hidePopup = () => {
-
-        if (!popup) {
-            return;
-        }
-
-
-        popup.classList.remove(
-            "show"
-        );
-
-
-        popup.setAttribute(
-            "aria-hidden",
-            "true"
-        );
-
-    };
-
-
-    if (celebrateButton) {
-
-        celebrateButton.addEventListener(
+        birthdayButton.addEventListener(
             "click",
             () => {
+
+                birthdayPopup.classList.add(
+                    "show"
+                );
 
                 createConfetti();
-
-                showPopup(
-                    "Gotcha.",
-                    "Kalau kamu sampai sini, berarti prank-nya berhasil. 😭"
-                );
-
-            }
-        );
-
-    }
-
-
-    if (lastMessage) {
-
-        lastMessage.addEventListener(
-            "click",
-            () => {
-
-                showPopup(
-                    "Gotcha.",
-                    "Kamu benar-benar membaca semuanya sampai akhir. 😂"
-                );
 
             }
         );
@@ -878,90 +582,119 @@ document.addEventListener("DOMContentLoaded", () => {
 
         closePopup.addEventListener(
             "click",
-            hidePopup
+            () => {
+
+                birthdayPopup.classList.remove(
+                    "show"
+                );
+
+            }
         );
 
     }
 
 
-    if (popup) {
+    if (popupCelebrate) {
 
-        popup.addEventListener(
+        popupCelebrate.addEventListener(
             "click",
-            (event) => {
+            () => {
+
+                birthdayPopup.classList.remove(
+                    "show"
+                );
+
+                createConfetti();
+
+                window.scrollTo({
+                    top:
+                        document.body.scrollHeight,
+                    behavior: "smooth"
+                });
+
+            }
+        );
+
+    }
+
+
+    /* =====================================================
+       CLOSE POPUP WHEN CLICKING OUTSIDE
+    ===================================================== */
+
+    if (birthdayPopup) {
+
+        birthdayPopup.addEventListener(
+            "click",
+            event => {
 
                 if (
-                    event.target === popup
+                    event.target ===
+                    birthdayPopup
                 ) {
 
-                    hidePopup();
-
-                }
-
-            }
-        );
-
-    }
-
-
-    document.addEventListener(
-        "keydown",
-        (event) => {
-
-            if (
-                event.key === "Escape"
-            ) {
-
-                hidePopup();
-
-            }
-
-        }
-    );
-
-
-    /* ==================================================
-       PREVENT BROKEN IMAGE VISUALS
-       
-       If an image doesn't exist,
-       placeholder remains visible.
-    =================================================== */
-
-    const galleryImages =
-        document.querySelectorAll(
-            ".gallery-item img"
-        );
-
-
-    galleryImages.forEach(
-        (image) => {
-
-            image.addEventListener(
-                "error",
-                () => {
-
-                    image.classList.add(
-                        "image-missing"
+                    birthdayPopup.classList.remove(
+                        "show"
                     );
 
                 }
-            );
+
+            }
+        );
+
+    }
+
+
+    /* =====================================================
+       ESC KEY
+    ===================================================== */
+
+    document.addEventListener(
+        "keydown",
+        event => {
+
+            if (
+                event.key === "Escape" &&
+                birthdayPopup
+            ) {
+
+                birthdayPopup.classList.remove(
+                    "show"
+                );
+
+            }
 
         }
     );
 
 
-    /* ==================================================
-       CONSOLE CHECK
-    =================================================== */
+    /* =====================================================
+       INITIAL BODY STATE
+    ===================================================== */
 
-    console.log(
-        "Luxury Wedding Prank 2.0 loaded."
-    );
+    document.body.style.overflow =
+        "hidden";
 
-    console.log(
-        "Birthday target:",
-        friendName
-    );
+
+    /*
+     * Safety fallback:
+     * If anything goes wrong, the user can still
+     * open the invitation after a short time.
+     */
+
+    setTimeout(() => {
+
+        if (
+            envelopeScreen &&
+            !envelopeOpened
+        ) {
+
+            openButton.textContent =
+                "OPEN INVITATION";
+
+        }
+
+    }, 1500);
+
 
 });
