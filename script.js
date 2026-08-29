@@ -1,36 +1,32 @@
-/* =========================================
-   SAFE START
-========================================= */
-
 document.addEventListener("DOMContentLoaded", function () {
 
-  /* =======================================
+  /* =====================================================
      ELEMENTS
-  ======================================= */
+  ====================================================== */
 
   const loader =
     document.getElementById("loader");
 
+  const opening =
+    document.getElementById("opening");
+
   const envelope =
     document.getElementById("envelope");
-
-  const envelopeScreen =
-    document.getElementById("envelopeScreen");
 
   const music =
     document.getElementById("weddingMusic");
 
-  const musicButton =
-    document.getElementById("musicButton");
+  const musicToggle =
+    document.getElementById("musicToggle");
 
-  const startButton =
-    document.getElementById("startButton");
+  const rsvpButton =
+    document.getElementById("rsvpButton");
 
   const celebrateButton =
     document.getElementById("celebrateButton");
 
-  const messageButton =
-    document.getElementById("messageButton");
+  const lastMessage =
+    document.getElementById("lastMessage");
 
   const popup =
     document.getElementById("popup");
@@ -39,11 +35,10 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("closePopup");
 
 
-  /* =======================================
+  /* =====================================================
      LOADING
-     IMPORTANT:
-     Loader will ALWAYS disappear.
-  ======================================= */
+     NEVER DEPENDS ON MUSIC / IMAGES
+  ====================================================== */
 
   setTimeout(function () {
 
@@ -51,44 +46,39 @@ document.addEventListener("DOMContentLoaded", function () {
       loader.classList.add("hide");
     }
 
-  }, 1000);
+  }, 1200);
 
-
-  /* Backup loader removal */
 
   window.addEventListener("load", function () {
 
     if (loader) {
-
-      setTimeout(function () {
-
-        loader.classList.add("hide");
-
-      }, 300);
-
+      loader.classList.add("hide");
     }
 
   });
 
 
-  /* =======================================
-     FRIEND NAME
-  ======================================= */
+  /* =====================================================
+     NAME FROM URL
+     
+     Example:
+     ?name=Amanda
+  ====================================================== */
 
   const params =
     new URLSearchParams(
       window.location.search
     );
 
-  let name =
+  let friend =
     params.get("name");
 
-  if (!name) {
-    name = "BESTIE";
+  if (!friend) {
+    friend = "BESTIE";
   }
 
-  name =
-    decodeURIComponent(name)
+  friend =
+    decodeURIComponent(friend)
       .replace(/\+/g, " ")
       .trim()
       .toUpperCase();
@@ -102,19 +92,20 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
   if (friendName) {
-    friendName.textContent = name;
+    friendName.textContent = friend;
   }
 
   if (letterName) {
-    letterName.textContent = name;
+    letterName.textContent = friend;
   }
 
 
-  /* =======================================
+  /* =====================================================
      ENVELOPE
-  ======================================= */
+  ====================================================== */
 
-  let envelopeOpened = false;
+  let opened = false;
+
   let musicPlaying = false;
 
 
@@ -124,41 +115,43 @@ document.addEventListener("DOMContentLoaded", function () {
       "click",
       function () {
 
-        if (envelopeOpened) {
+        if (opened) {
           return;
         }
 
-        envelopeOpened = true;
+        opened = true;
 
         envelope.classList.add("open");
 
 
-        /* MUSIC */
+        /* ---------------------------------------------
+           MUSIC
+        --------------------------------------------- */
 
         if (music) {
 
-          music.volume = 0.35;
+          music.volume = 0.28;
 
-          const playPromise =
+          const play =
             music.play();
 
           if (
-            playPromise !== undefined
+            play !== undefined
           ) {
 
-            playPromise
+            play
               .then(function () {
 
                 musicPlaying = true;
 
-                updateMusicButton();
+                updateMusic();
 
               })
               .catch(function () {
 
                 musicPlaying = false;
 
-                updateMusicButton();
+                updateMusic();
 
               });
 
@@ -167,23 +160,21 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
 
-        /* HIDE ENVELOPE */
+        /* ---------------------------------------------
+           CLOSE ENVELOPE
+        --------------------------------------------- */
 
         setTimeout(function () {
 
-          if (envelopeScreen) {
-
-            envelopeScreen.classList.add(
-              "hide"
-            );
-
+          if (opening) {
+            opening.classList.add("hide");
           }
 
           document.body.classList.remove(
             "locked"
           );
 
-        }, 1400);
+        }, 1500);
 
       }
     );
@@ -191,27 +182,28 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
 
-  /* =======================================
-     MUSIC BUTTON
-  ======================================= */
+  /* =====================================================
+     MUSIC
+  ====================================================== */
 
-  function updateMusicButton() {
+  function updateMusic() {
 
-    if (!musicButton) {
+    if (!musicToggle) {
       return;
     }
 
-    musicButton.textContent =
-      musicPlaying
-        ? "♫"
-        : "🔇";
+    if (musicPlaying) {
+      musicToggle.classList.remove("paused");
+    } else {
+      musicToggle.classList.add("paused");
+    }
 
   }
 
 
-  if (musicButton) {
+  if (musicToggle) {
 
-    musicButton.addEventListener(
+    musicToggle.addEventListener(
       "click",
       function () {
 
@@ -242,7 +234,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         }
 
-        updateMusicButton();
+        updateMusic();
 
       }
     );
@@ -250,58 +242,31 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
 
-  updateMusicButton();
+  updateMusic();
 
 
-  /* =======================================
-     OPEN INVITATION
-  ======================================= */
-
-  if (startButton) {
-
-    startButton.addEventListener(
-      "click",
-      function () {
-
-        const hero =
-          document.querySelector(".hero");
-
-        if (hero) {
-
-          hero.scrollIntoView({
-            behavior: "smooth"
-          });
-
-        }
-
-      }
-    );
-
-  }
-
-
-  /* =======================================
+  /* =====================================================
      SCROLL REVEAL
-  ======================================= */
+  ====================================================== */
 
-  const revealElements =
+  const revealItems =
     document.querySelectorAll(".reveal");
 
 
-  function revealOnScroll() {
+  function reveal() {
 
-    revealElements.forEach(
-      function (element) {
+    revealItems.forEach(
+      function (item) {
 
-        const position =
-          element.getBoundingClientRect().top;
+        const top =
+          item.getBoundingClientRect().top;
 
         if (
-          position <
+          top <
           window.innerHeight - 70
         ) {
 
-          element.classList.add(
+          item.classList.add(
             "visible"
           );
 
@@ -315,15 +280,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
   window.addEventListener(
     "scroll",
-    revealOnScroll
+    reveal
   );
 
-  revealOnScroll();
+  reveal();
 
 
-  /* =======================================
+  /* =====================================================
      COUNTDOWN
-  ======================================= */
+  ====================================================== */
 
   let days = 31;
   let hours = 8;
@@ -331,16 +296,16 @@ document.addEventListener("DOMContentLoaded", function () {
   let seconds = 31;
 
 
-  const daysElement =
+  const dayElement =
     document.getElementById("days");
 
-  const hoursElement =
+  const hourElement =
     document.getElementById("hours");
 
-  const minutesElement =
+  const minuteElement =
     document.getElementById("minutes");
 
-  const secondsElement =
+  const secondElement =
     document.getElementById("seconds");
 
 
@@ -389,31 +354,35 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 
-    if (daysElement) {
+    if (dayElement) {
 
-      daysElement.textContent =
-        String(days).padStart(2, "0");
-
-    }
-
-    if (hoursElement) {
-
-      hoursElement.textContent =
-        String(hours).padStart(2, "0");
+      dayElement.textContent =
+        String(days)
+          .padStart(2, "0");
 
     }
 
-    if (minutesElement) {
+    if (hourElement) {
 
-      minutesElement.textContent =
-        String(minutes).padStart(2, "0");
+      hourElement.textContent =
+        String(hours)
+          .padStart(2, "0");
 
     }
 
-    if (secondsElement) {
+    if (minuteElement) {
 
-      secondsElement.textContent =
-        String(seconds).padStart(2, "0");
+      minuteElement.textContent =
+        String(minutes)
+          .padStart(2, "0");
+
+    }
+
+    if (secondElement) {
+
+      secondElement.textContent =
+        String(seconds)
+          .padStart(2, "0");
 
     }
 
@@ -426,25 +395,44 @@ document.addEventListener("DOMContentLoaded", function () {
   );
 
 
-  /* =======================================
-     CONFETTI
-  ======================================= */
+  /* =====================================================
+     RSVP FAKE INTERACTION
+  ====================================================== */
 
-  let confettiCreated = false;
+  if (rsvpButton) {
+
+    rsvpButton.addEventListener(
+      "click",
+      function () {
+
+        alert(
+          "RSVP received. We can't wait to see you! ♡"
+        );
+
+      }
+    );
+
+  }
+
+
+  /* =====================================================
+     CONFETTI
+  ====================================================== */
+
+  let confettiStarted = false;
 
 
   function createConfetti() {
 
-    if (confettiCreated) {
+    if (confettiStarted) {
       return;
     }
 
-    confettiCreated = true;
+    confettiStarted = true;
 
 
     const birthday =
       document.getElementById("birthday");
-
 
     if (!birthday) {
       return;
@@ -464,7 +452,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     for (
       let i = 0;
-      i < 160;
+      i < 150;
       i++
     ) {
 
@@ -492,14 +480,14 @@ document.addEventListener("DOMContentLoaded", function () {
       piece.style.fontSize =
         (
           8 +
-          Math.random() * 16
+          Math.random() * 17
         ) + "px";
 
 
       piece.style.animationDuration =
         (
           3 +
-          Math.random() * 5
+          Math.random() * 4
         ) + "s";
 
 
@@ -516,9 +504,9 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
 
-  /* =======================================
-     BIRTHDAY OBSERVER
-  ======================================= */
+  /* =====================================================
+     WATCH BIRTHDAY SECTION
+  ====================================================== */
 
   const birthday =
     document.getElementById("birthday");
@@ -556,9 +544,27 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
 
-  /* =======================================
-     CELEBRATE BUTTON
-  ======================================= */
+  /* =====================================================
+     POPUP
+  ====================================================== */
+
+  function showPopup() {
+
+    if (popup) {
+      popup.classList.add("show");
+    }
+
+  }
+
+
+  function hidePopup() {
+
+    if (popup) {
+      popup.classList.remove("show");
+    }
+
+  }
+
 
   if (celebrateButton) {
 
@@ -568,11 +574,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         createConfetti();
 
-        if (popup) {
-
-          popup.classList.add("show");
-
-        }
+        showPopup();
 
       }
     );
@@ -580,53 +582,29 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
 
-  /* =======================================
-     MESSAGE BUTTON
-  ======================================= */
+  if (lastMessage) {
 
-  if (messageButton) {
-
-    messageButton.addEventListener(
+    lastMessage.addEventListener(
       "click",
       function () {
 
-        if (popup) {
-
-          popup.classList.add("show");
-
-        }
+        showPopup();
 
       }
     );
 
   }
 
-
-  /* =======================================
-     CLOSE POPUP
-  ======================================= */
 
   if (closePopup) {
 
     closePopup.addEventListener(
       "click",
-      function () {
-
-        if (popup) {
-
-          popup.classList.remove("show");
-
-        }
-
-      }
+      hidePopup
     );
 
   }
 
-
-  /* =======================================
-     CLICK OUTSIDE POPUP
-  ======================================= */
 
   if (popup) {
 
@@ -638,9 +616,7 @@ document.addEventListener("DOMContentLoaded", function () {
           event.target === popup
         ) {
 
-          popup.classList.remove(
-            "show"
-          );
+          hidePopup();
 
         }
 
@@ -650,10 +626,6 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
 
-  /* =======================================
-     ESC KEY
-  ======================================= */
-
   document.addEventListener(
     "keydown",
     function (event) {
@@ -662,13 +634,7 @@ document.addEventListener("DOMContentLoaded", function () {
         event.key === "Escape"
       ) {
 
-        if (popup) {
-
-          popup.classList.remove(
-            "show"
-          );
-
-        }
+        hidePopup();
 
       }
 
@@ -676,17 +642,17 @@ document.addEventListener("DOMContentLoaded", function () {
   );
 
 
-  /* =======================================
+  /* =====================================================
      DEBUG
-  ======================================= */
+  ====================================================== */
 
   console.log(
-    "💍 Wedding prank loaded successfully."
+    "Luxury Wedding Prank loaded."
   );
 
   console.log(
-    "🎂 Target:",
-    name
+    "Birthday target:",
+    friend
   );
 
 });
