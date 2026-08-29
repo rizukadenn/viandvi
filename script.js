@@ -259,7 +259,7 @@ document.addEventListener("DOMContentLoaded", () => {
     ===================================================== */
 
     const weddingDate =
-        new Date("August 31, 2026 18:30:00").getTime();
+        new Date("December 12, 2026 18:30:00").getTime();
 
 
     function updateCountdown() {
