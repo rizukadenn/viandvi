@@ -4,70 +4,73 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Wedding Invitation</title>
+  <title>The Wedding of Rizuka</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Great+Vibes&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=DM+Sans:wght@300;400;500&family=Italiana&family=Great+Vibes&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-  <!-- ================================
+  <!-- =====================================================
        LOADING
-  ================================= -->
+  ====================================================== -->
 
   <div id="loader">
-
-    <div class="loader-heart">♡</div>
-
-    <div class="loader-line"></div>
-
-    <p>Preparing your invitation</p>
-
+    <div class="loader-inner">
+      <div class="loader-monogram">R</div>
+      <div class="loader-line"></div>
+      <p>PREPARING YOUR INVITATION</p>
+    </div>
   </div>
 
 
-  <!-- ================================
+  <!-- =====================================================
        MUSIC
-  ================================= -->
+  ====================================================== -->
 
   <audio id="weddingMusic" loop preload="auto">
     <source src="wedding.mp3" type="audio/mpeg">
   </audio>
 
-  <button id="musicButton" class="music-button">
-    ♫
+  <button id="musicToggle" class="music-toggle" aria-label="Music">
+    <span></span>
+    <span></span>
+    <span></span>
+    <small>MUSIC</small>
   </button>
 
 
-  <!-- ================================
+  <!-- =====================================================
        ENVELOPE
-  ================================= -->
+  ====================================================== -->
 
-  <section id="envelopeScreen" class="envelope-screen">
+  <section id="opening" class="opening">
 
-    <div class="envelope-wrapper">
+    <div class="opening-bg"></div>
 
-      <p class="invite-label">
-        YOU ARE CORDIALLY INVITED
+    <div class="opening-content">
+
+      <p class="opening-top">
+        A PRIVATE INVITATION
       </p>
 
-      <div id="envelope" class="envelope">
+      <div id="envelope" class="luxury-envelope">
 
         <div class="envelope-back"></div>
 
-        <div class="letter-paper">
+        <div class="envelope-letter">
 
           <p>THE WEDDING OF</p>
 
           <h2>
             Rizuka
             <span>&</span>
-            Someone
+            Raka
           </h2>
 
           <small>
@@ -80,14 +83,14 @@
 
         <div class="envelope-front"></div>
 
-        <div class="wax-seal">
-          ♡
+        <div class="wax">
+          R
         </div>
 
       </div>
 
-      <p class="tap-envelope">
-        TAP THE ENVELOPE
+      <p class="open-hint">
+        OPEN THE INVITATION
       </p>
 
     </div>
@@ -95,83 +98,85 @@
   </section>
 
 
-  <!-- ================================
-       HERO
-  ================================= -->
+  <!-- =====================================================
+       MAIN WEBSITE
+  ====================================================== -->
 
-  <main id="mainContent">
+  <main id="website">
+
+    <!-- HERO -->
 
     <section class="hero">
 
-      <div class="hero-overlay"></div>
+      <div class="hero-frame"></div>
 
       <div class="hero-content">
 
         <p class="eyebrow">
-          THE WEDDING OF
+          TOGETHER WITH THEIR FAMILIES
         </p>
 
         <h1>
           Rizuka
           <span>&</span>
-          Someone
+          Raka
         </h1>
 
         <div class="ornament">
           <i></i>
-          ❦
+          <b>✦</b>
           <i></i>
         </div>
 
-        <p class="date">
-          31 · 08 · 2026
+        <p class="hero-date">
+          MONDAY · 31 AUGUST 2026
         </p>
 
-        <p class="location">
-          A VERY SPECIAL CELEBRATION
+        <p class="hero-place">
+          JAKARTA · INDONESIA
         </p>
 
-        <button id="startButton" class="gold-button">
-          OPEN INVITATION
-        </button>
+        <a href="#welcome" class="hero-button">
+          VIEW INVITATION
+        </a>
 
       </div>
 
-      <div class="scroll-down">
-        SCROLL TO EXPLORE
+      <div class="hero-bottom">
+        SCROLL TO DISCOVER
         <span>↓</span>
       </div>
 
     </section>
 
 
-    <!-- ================================
-         INTRO
-    ================================= -->
+    <!-- =================================================
+         WELCOME
+    ================================================== -->
 
-    <section class="section intro">
+    <section id="welcome" class="welcome section">
 
-      <div class="container reveal">
+      <div class="narrow reveal">
 
-        <p class="section-label">
-          DEAR FRIENDS & FAMILY
+        <p class="small-title">
+          DEAR FAMILY & FRIENDS
         </p>
 
         <h2>
-          A New Chapter<br>
-          Begins...
+          A celebration<br>
+          of love.
         </h2>
 
         <div class="gold-line"></div>
 
-        <p class="paragraph">
-          With joyful hearts and endless gratitude,
-          we invite you to celebrate a very special
-          moment with us.
+        <p class="body-copy">
+          It is with immense joy that we invite
+          you to join us as we begin a beautiful
+          new chapter together.
         </p>
 
-        <p class="script">
-          Together with our loved ones
+        <p class="handwritten">
+          We cannot wait to celebrate with you.
         </p>
 
       </div>
@@ -179,80 +184,91 @@
     </section>
 
 
-    <!-- ================================
-         COUPLE
-    ================================= -->
+    <!-- =================================================
+         DATE / VENUE
+    ================================================== -->
 
-    <section class="section couple">
+    <section class="details section">
 
-      <div class="container">
+      <div class="section-intro reveal">
 
-        <div class="section-heading reveal">
+        <p class="small-title">
+          SAVE THE DATE
+        </p>
 
-          <p class="section-label">
-            THE HAPPY COUPLE
+        <h2>
+          The Day
+        </h2>
+
+        <div class="gold-line"></div>
+
+      </div>
+
+
+      <div class="details-grid">
+
+        <div class="detail reveal">
+
+          <span class="detail-number">
+            01
+          </span>
+
+          <p class="small-title">
+            CEREMONY
           </p>
 
-          <h2>
-            Two Hearts,<br>
-            One Story
-          </h2>
+          <h3>
+            16:00
+          </h3>
 
-          <div class="gold-line"></div>
+          <p>
+            Monday<br>
+            31 August 2026
+          </p>
 
         </div>
 
 
-        <div class="couple-grid">
+        <div class="detail reveal">
 
-          <div class="person reveal">
+          <span class="detail-number">
+            02
+          </span>
 
-            <div class="portrait bride">
-              <span>R</span>
-            </div>
+          <p class="small-title">
+            RECEPTION
+          </p>
 
-            <p class="role">
-              THE BRIDE
-            </p>
+          <h3>
+            18:30
+          </h3>
 
-            <h3>
-              Rizuka
-            </h3>
+          <p>
+            An evening<br>
+            to remember
+          </p>
 
-            <p>
-              A beautiful soul
-              who apparently decided
-              to get married.
-            </p>
-
-          </div>
+        </div>
 
 
-          <div class="and reveal">
-            &
-          </div>
+        <div class="detail reveal">
 
+          <span class="detail-number">
+            03
+          </span>
 
-          <div class="person reveal">
+          <p class="small-title">
+            VENUE
+          </p>
 
-            <div class="portrait groom">
-              <span>?</span>
-            </div>
+          <h3>
+            The Grand
+          </h3>
 
-            <p class="role">
-              THE GROOM
-            </p>
-
-            <h3>
-              Someone
-            </h3>
-
-            <p>
-              His identity remains
-              mysteriously classified.
-            </p>
-
-          </div>
+          <p>
+            Jakarta<br>
+            Indonesia
+          </p>
 
         </div>
 
@@ -261,287 +277,80 @@
     </section>
 
 
-    <!-- ================================
+    <!-- =================================================
          GALLERY
-    ================================= -->
+    ================================================== -->
 
-    <section class="section gallery">
+    <section class="gallery section">
 
-      <div class="container">
+      <div class="section-intro reveal">
 
-        <div class="section-heading reveal">
-
-          <p class="section-label">
-            OUR MEMORIES
-          </p>
-
-          <h2>
-            Moments<br>
-            Together
-          </h2>
-
-          <div class="gold-line"></div>
-
-        </div>
-
-
-        <div class="gallery-grid">
-
-          <div class="gallery-card card-one reveal">
-            <span>♡</span>
-            <p>OUR FIRST<br>ADVENTURE</p>
-          </div>
-
-          <div class="gallery-card card-two reveal">
-            <span>✦</span>
-            <p>SWEET<br>MEMORIES</p>
-          </div>
-
-          <div class="gallery-card card-three reveal">
-            <span>❀</span>
-            <p>SPECIAL<br>MOMENTS</p>
-          </div>
-
-          <div class="gallery-card card-four reveal">
-            <span>♡</span>
-            <p>FOREVER<br>TOGETHER</p>
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- ================================
-         DETAILS
-    ================================= -->
-
-    <section class="section details">
-
-      <div class="container">
-
-        <div class="section-heading reveal">
-
-          <p class="section-label">
-            SAVE THE DATE
-          </p>
-
-          <h2>
-            The Big Day
-          </h2>
-
-          <div class="gold-line"></div>
-
-        </div>
-
-
-        <div class="details-grid">
-
-          <div class="detail reveal">
-
-            <span>♡</span>
-
-            <small>DATE</small>
-
-            <h3>
-              31 August<br>
-              2026
-            </h3>
-
-          </div>
-
-
-          <div class="detail reveal">
-
-            <span>⌖</span>
-
-            <small>LOCATION</small>
-
-            <h3>
-              Somewhere<br>
-              Special
-            </h3>
-
-          </div>
-
-
-          <div class="detail reveal">
-
-            <span>✦</span>
-
-            <small>DRESS CODE</small>
-
-            <h3>
-              Come As<br>
-              You Are
-            </h3>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- ================================
-         STORY
-    ================================= -->
-
-    <section class="section story">
-
-      <div class="container">
-
-        <div class="section-heading reveal">
-
-          <p class="section-label">
-            OUR STORY
-          </p>
-
-          <h2>
-            How It All<br>
-            Started
-          </h2>
-
-          <div class="gold-line"></div>
-
-        </div>
-
-
-        <div class="timeline">
-
-          <div class="timeline-item reveal">
-
-            <span>2019</span>
-
-            <div>
-
-              <h3>
-                First Meeting
-              </h3>
-
-              <p>
-                It all started with
-                a completely normal day.
-              </p>
-
-            </div>
-
-          </div>
-
-
-          <div class="timeline-item reveal">
-
-            <span>2021</span>
-
-            <div>
-
-              <h3>
-                Getting Closer
-              </h3>
-
-              <p>
-                Somehow things became
-                a little more interesting.
-              </p>
-
-            </div>
-
-          </div>
-
-
-          <div class="timeline-item reveal">
-
-            <span>2024</span>
-
-            <div>
-
-              <h3>
-                Special Connection
-              </h3>
-
-              <p>
-                Something was definitely
-                going on.
-              </p>
-
-            </div>
-
-          </div>
-
-
-          <div class="timeline-item suspicious reveal">
-
-            <span>2026</span>
-
-            <div>
-
-              <h3>
-                The Big Celebration
-              </h3>
-
-              <p>
-                Hmm... this is starting
-                to look suspicious.
-              </p>
-
-            </div>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- ================================
-         SUSPICION
-    ================================= -->
-
-    <section class="section suspicion">
-
-      <div class="container reveal">
-
-        <p class="section-label">
-          WAIT A SECOND...
+        <p class="small-title">
+          OUR MEMORIES
         </p>
 
         <h2>
-          Something Doesn't<br>
-          Feel Right.
+          Moments<br>
+          We've Shared
         </h2>
 
         <div class="gold-line"></div>
 
-        <p class="paragraph">
-          We've been talking about love,
-          marriage, commitment and a
-          very special date...
-        </p>
-
-        <p class="script">
-          But let's look at the numbers.
-        </p>
+      </div>
 
 
-        <div class="number-box">
+      <div class="photo-grid">
+
+        <div class="photo photo-one reveal">
+          <img
+            src="photo1.jpg"
+            alt="Our memory"
+            onerror="this.style.display='none'"
+          >
+
+          <div class="photo-fallback">
+            <span>R</span>
+          </div>
 
           <p>
-            Why does everything
-            keep coming back to...
+            ONE BEAUTIFUL DAY
+          </p>
+        </div>
+
+
+        <div class="photo photo-two reveal">
+
+          <img
+            src="photo2.jpg"
+            alt="Our memory"
+            onerror="this.style.display='none'"
+          >
+
+          <div class="photo-fallback">
+            <span>♡</span>
+          </div>
+
+          <p>
+            LITTLE MOMENTS
           </p>
 
-          <strong>
-            31
-          </strong>
+        </div>
+
+
+        <div class="photo photo-three reveal">
+
+          <img
+            src="photo3.jpg"
+            alt="Our memory"
+            onerror="this.style.display='none'"
+          >
+
+          <div class="photo-fallback">
+            <span>R</span>
+          </div>
 
           <p>
-            ...?
+            FOREVER MEMORIES
           </p>
 
         </div>
@@ -551,79 +360,233 @@
     </section>
 
 
-    <!-- ================================
-         COUNTDOWN
-    ================================= -->
+    <!-- =================================================
+         STORY
+    ================================================== -->
 
-    <section class="section countdown-section">
+    <section class="story section">
 
-      <div class="container reveal">
+      <div class="section-intro reveal">
 
-        <p class="section-label">
-          THE MOMENT IS NEAR
+        <p class="small-title">
+          OUR STORY
         </p>
 
         <h2>
-          Almost There...
+          It all started<br>
+          with a moment.
         </h2>
 
+        <div class="gold-line"></div>
 
-        <div class="countdown">
+      </div>
 
-          <div>
-            <strong id="days">31</strong>
-            <span>DAYS</span>
-          </div>
 
-          <div>
-            <strong id="hours">08</strong>
-            <span>HOURS</span>
-          </div>
+      <div class="story-list">
 
-          <div>
-            <strong id="minutes">31</strong>
-            <span>MINUTES</span>
-          </div>
+        <div class="story-row reveal">
+
+          <span>
+            2019
+          </span>
 
           <div>
-            <strong id="seconds">31</strong>
-            <span>SECONDS</span>
+            <h3>
+              The Beginning
+            </h3>
+
+            <p>
+              Two people crossed paths
+              without knowing what the
+              future had in store.
+            </p>
           </div>
 
         </div>
 
 
-        <p class="keep-scrolling">
-          Keep scrolling...
-        </p>
+        <div class="story-row reveal">
+
+          <span>
+            2021
+          </span>
+
+          <div>
+            <h3>
+              Getting Closer
+            </h3>
+
+            <p>
+              Conversations became longer,
+              memories became sweeter.
+            </p>
+          </div>
+
+        </div>
+
+
+        <div class="story-row reveal">
+
+          <span>
+            2024
+          </span>
+
+          <div>
+            <h3>
+              Something Special
+            </h3>
+
+            <p>
+              Somewhere along the way,
+              friendship became something
+              worth celebrating.
+            </p>
+          </div>
+
+        </div>
+
+
+        <div class="story-row suspicious reveal">
+
+          <span>
+            2026
+          </span>
+
+          <div>
+            <h3>
+              The Big Day
+            </h3>
+
+            <p>
+              And apparently...
+              something very important
+              is happening today.
+            </p>
+          </div>
+
+        </div>
 
       </div>
 
     </section>
 
 
-    <!-- ================================
-         DRAMATIC TRANSITION
-    ================================= -->
+    <!-- =================================================
+         RSVP
+    ================================================== -->
 
-    <section class="transition">
+    <section class="rsvp section">
 
-      <div class="transition-content">
+      <div class="narrow reveal">
+
+        <p class="small-title">
+          KINDLY RESPOND
+        </p>
+
+        <h2>
+          Will you<br>
+          join us?
+        </h2>
+
+        <div class="gold-line"></div>
+
+        <p class="body-copy">
+          Your presence would make this
+          celebration even more meaningful.
+        </p>
+
+        <button id="rsvpButton" class="outline-button">
+          CONFIRM ATTENDANCE
+        </button>
+
+      </div>
+
+    </section>
+
+
+    <!-- =================================================
+         COUNTDOWN
+    ================================================== -->
+
+    <section class="countdown-section section">
+
+      <div class="narrow reveal">
+
+        <p class="small-title">
+          COUNTING DOWN
+        </p>
+
+        <h2>
+          Until the<br>
+          big moment.
+        </h2>
+
+        <div class="gold-line"></div>
+
+      </div>
+
+
+      <div class="countdown reveal">
+
+        <div>
+          <strong id="days">31</strong>
+          <span>DAYS</span>
+        </div>
+
+        <div>
+          <strong id="hours">08</strong>
+          <span>HOURS</span>
+        </div>
+
+        <div>
+          <strong id="minutes">31</strong>
+          <span>MINUTES</span>
+        </div>
+
+        <div>
+          <strong id="seconds">31</strong>
+          <span>SECONDS</span>
+        </div>
+
+      </div>
+
+
+      <p class="countdown-note">
+        Almost there.
+      </p>
+
+    </section>
+
+
+    <!-- =================================================
+         SOMETHING WRONG
+    ================================================== -->
+
+    <section id="suspicion" class="suspicion section">
+
+      <div class="suspicion-content">
+
+        <p class="small-title">
+          ONE LAST THING
+        </p>
+
+        <h2>
+          Wait.
+        </h2>
+
+        <div class="gold-line"></div>
 
         <p>
-          WAIT...
+          Before you continue...
         </p>
 
-        <div class="transition-line"></div>
+        <p class="large-question">
+          Are you sure<br>
+          this is a wedding?
+        </p>
 
-        <h2>
-          THERE'S<br>
-          SOMETHING<br>
-          YOU SHOULD KNOW.
-        </h2>
-
-        <span>
-          ↓
+        <span class="question-mark">
+          ?
         </span>
 
       </div>
@@ -631,41 +594,66 @@
     </section>
 
 
-    <!-- ================================
-         BIRTHDAY
-    ================================= -->
+    <!-- =================================================
+         PLOT TWIST
+    ================================================== -->
+
+    <section id="plotTwist" class="plot-twist">
+
+      <div class="twist-content">
+
+        <p>
+          THERE'S SOMETHING<br>
+          WE FORGOT TO TELL YOU.
+        </p>
+
+        <div class="twist-line"></div>
+
+        <h2>
+          THERE IS<br>
+          NO WEDDING.
+        </h2>
+
+        <div class="twist-small">
+          ↓
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =================================================
+         BIRTHDAY REVEAL
+    ================================================== -->
 
     <section id="birthday" class="birthday">
 
-      <div id="confetti" class="confetti"></div>
+      <div class="birthday-glow"></div>
+
+      <div id="confetti"></div>
 
       <div class="birthday-content">
 
-        <p class="surprise">
-          OKAY... WE LIED.
+        <p class="birthday-overline">
+          SURPRISE!
         </p>
 
         <h1>
-          SURPRISE!
+          HAPPY
         </h1>
 
         <div class="age">
           31
         </div>
 
-        <p class="not-wedding">
-          YOU'RE NOT GETTING<br>
-          MARRIED.
-        </p>
-
-        <div class="stars">
-          ✦ ✦ ✦
-        </div>
-
         <h2>
-          IT'S YOUR<br>
-          BIRTHDAY! 🎂
+          BIRTHDAY
         </h2>
+
+        <div class="birthday-ornament">
+          ✦ &nbsp; ✧ &nbsp; ✦
+        </div>
 
         <p class="birthday-script">
           Happy 31st Birthday,
@@ -675,8 +663,12 @@
           BESTIE
         </h3>
 
-        <button id="celebrateButton" class="celebrate-button">
-          LET'S CELEBRATE 🎉
+        <p class="birthday-sub">
+          You really thought this was a wedding. 😂
+        </p>
+
+        <button id="celebrateButton" class="birthday-button">
+          CELEBRATE 🎉
         </button>
 
       </div>
@@ -684,27 +676,27 @@
     </section>
 
 
-    <!-- ================================
-         MESSAGE
-    ================================= -->
+    <!-- =================================================
+         BIRTHDAY LETTER
+    ================================================== -->
 
-    <section class="birthday-message">
+    <section class="birthday-letter section">
 
-      <div class="container reveal">
+      <div class="letter-container reveal">
 
-        <p class="section-label">
+        <p class="small-title">
           A LITTLE MESSAGE
         </p>
 
         <h2>
-          31 Looks<br>
-          Good On You ✨
+          For your<br>
+          31st chapter.
         </h2>
 
         <div class="gold-line"></div>
 
 
-        <div class="letter">
+        <div class="letter-paper">
 
           <p>
             Dear
@@ -718,34 +710,37 @@
           </p>
 
           <p>
-            Semoga di umur yang baru ini,
-            hidupmu dipenuhi lebih banyak
-            kebahagiaan, tawa, pengalaman
-            seru, dan hal-hal baik.
+            Semoga di usia yang baru ini,
+            hidupmu dipenuhi banyak hal
+            baik yang bahkan tidak pernah
+            kamu sangka akan datang.
           </p>
 
           <p>
-            Semoga semua impian yang sedang
-            kamu perjuangkan perlahan menemukan
-            jalannya.
+            Semoga langkahmu selalu dimudahkan,
+            impianmu satu per satu menjadi nyata,
+            dan kamu selalu punya alasan untuk
+            tersenyum.
           </p>
 
           <p>
-            Dan semoga kamu selalu dikelilingi
-            orang-orang yang sayang sama kamu.
+            Thank you for being one of those
+            people who make ordinary days
+            feel a little more special.
           </p>
 
-          <p class="highlight">
-            Oh iya...
+          <p class="pink-text">
+            And yes...
           </p>
 
-          <p class="highlight">
-            Jangan percaya undangan online
-            yang terlalu dramatis. 😂
+          <p class="pink-text">
+            I'm sorry for making you scroll
+            through an entire wedding invitation
+            just to say this. 😭
           </p>
 
           <p>
-            With lots of love,
+            With love,
           </p>
 
           <p class="signature">
@@ -755,8 +750,8 @@
         </div>
 
 
-        <button id="messageButton" class="message-button">
-          OPEN ONE LAST MESSAGE 💌
+        <button id="lastMessage" class="outline-button">
+          ONE LAST SURPRISE
         </button>
 
       </div>
@@ -764,18 +759,22 @@
     </section>
 
 
-    <!-- ================================
+    <!-- =================================================
          FOOTER
-    ================================= -->
+    ================================================== -->
 
     <footer>
 
+      <div class="footer-monogram">
+        R
+      </div>
+
       <p>
-        MADE WITH LOVE, CHAOS & A LITTLE PRANK ♡
+        MADE WITH LOVE, CHAOS & A LITTLE DECEPTION
       </p>
 
       <small>
-        2026
+        2026 · THE END
       </small>
 
     </footer>
@@ -783,39 +782,38 @@
   </main>
 
 
-  <!-- ================================
+  <!-- =====================================================
        POPUP
-  ================================= -->
+  ====================================================== -->
 
   <div id="popup" class="popup">
 
-    <div class="popup-card">
+    <div class="popup-box">
 
       <button id="closePopup" class="close-popup">
         ×
       </button>
 
       <div class="popup-icon">
-        💌
+        ✦
       </div>
 
-      <p class="section-label">
-        ONE LAST THING
+      <p class="small-title">
+        P.S.
       </p>
 
       <h2>
-        P.S.
+        Gotcha. 😭
       </h2>
 
       <p>
-        Jangan marah ya...
+        Kalau kamu sampai sini,
+        berarti prank-nya berhasil.
       </p>
 
       <p>
-        Kalau aku bilang dari awal
-        ini website ulang tahun,
-        kamu pasti nggak bakal
-        scroll sampai bawah. 😭
+        Sekarang nggak ada lagi
+        plot twist.
       </p>
 
       <strong>
