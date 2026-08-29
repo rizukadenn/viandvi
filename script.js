@@ -1,658 +1,967 @@
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", () => {
 
-  /* =====================================================
-     ELEMENTS
-  ====================================================== */
+    /* ==================================================
+       ELEMENTS
+    =================================================== */
 
-  const loader =
-    document.getElementById("loader");
+    const loader =
+        document.getElementById("loader");
 
-  const opening =
-    document.getElementById("opening");
+    const envelopeScreen =
+        document.getElementById("envelopeScreen");
 
-  const envelope =
-    document.getElementById("envelope");
+    const envelope =
+        document.getElementById("envelope");
 
-  const music =
-    document.getElementById("weddingMusic");
+    const music =
+        document.getElementById("weddingMusic");
 
-  const musicToggle =
-    document.getElementById("musicToggle");
+    const musicButton =
+        document.getElementById("musicButton");
 
-  const rsvpButton =
-    document.getElementById("rsvpButton");
+    const invitation =
+        document.getElementById("invitation");
 
-  const celebrateButton =
-    document.getElementById("celebrateButton");
+    const rsvpButton =
+        document.getElementById("rsvpButton");
 
-  const lastMessage =
-    document.getElementById("lastMessage");
+    const birthday =
+        document.getElementById("birthday");
 
-  const popup =
-    document.getElementById("popup");
+    const confetti =
+        document.getElementById("confetti");
 
-  const closePopup =
-    document.getElementById("closePopup");
+    const celebrateButton =
+        document.getElementById("celebrateButton");
 
+    const lastMessage =
+        document.getElementById("lastMessage");
 
-  /* =====================================================
-     LOADING
-     NEVER DEPENDS ON MUSIC / IMAGES
-  ====================================================== */
+    const popup =
+        document.getElementById("popup");
 
-  setTimeout(function () {
-
-    if (loader) {
-      loader.classList.add("hide");
-    }
-
-  }, 1200);
+    const closePopup =
+        document.getElementById("closePopup");
 
 
-  window.addEventListener("load", function () {
+    /* ==================================================
+       LOADER
+       
+       IMPORTANT:
+       Loader does NOT wait for:
+       - images
+       - music
+       - fonts
+       
+       This prevents the previous loading problem.
+    =================================================== */
 
-    if (loader) {
-      loader.classList.add("hide");
-    }
+    const hideLoader = () => {
 
-  });
-
-
-  /* =====================================================
-     NAME FROM URL
-     
-     Example:
-     ?name=Amanda
-  ====================================================== */
-
-  const params =
-    new URLSearchParams(
-      window.location.search
-    );
-
-  let friend =
-    params.get("name");
-
-  if (!friend) {
-    friend = "BESTIE";
-  }
-
-  friend =
-    decodeURIComponent(friend)
-      .replace(/\+/g, " ")
-      .trim()
-      .toUpperCase();
-
-
-  const friendName =
-    document.getElementById("friendName");
-
-  const letterName =
-    document.getElementById("letterName");
-
-
-  if (friendName) {
-    friendName.textContent = friend;
-  }
-
-  if (letterName) {
-    letterName.textContent = friend;
-  }
-
-
-  /* =====================================================
-     ENVELOPE
-  ====================================================== */
-
-  let opened = false;
-
-  let musicPlaying = false;
-
-
-  if (envelope) {
-
-    envelope.addEventListener(
-      "click",
-      function () {
-
-        if (opened) {
-          return;
+        if (!loader) {
+            return;
         }
 
-        opened = true;
+        loader.classList.add(
+            "is-hidden"
+        );
 
-        envelope.classList.add("open");
-
-
-        /* ---------------------------------------------
-           MUSIC
-        --------------------------------------------- */
-
-        if (music) {
-
-          music.volume = 0.28;
-
-          const play =
-            music.play();
-
-          if (
-            play !== undefined
-          ) {
-
-            play
-              .then(function () {
-
-                musicPlaying = true;
-
-                updateMusic();
-
-              })
-              .catch(function () {
-
-                musicPlaying = false;
-
-                updateMusic();
-
-              });
-
-          }
-
-        }
+    };
 
 
-        /* ---------------------------------------------
-           CLOSE ENVELOPE
-        --------------------------------------------- */
-
-        setTimeout(function () {
-
-          if (opening) {
-            opening.classList.add("hide");
-          }
-
-          document.body.classList.remove(
-            "locked"
-          );
-
-        }, 1500);
-
-      }
+    setTimeout(
+        hideLoader,
+        1200
     );
 
-  }
+
+    window.addEventListener(
+        "load",
+        hideLoader
+    );
 
 
-  /* =====================================================
-     MUSIC
-  ====================================================== */
+    /* ==================================================
+       LOCK PAGE UNTIL ENVELOPE IS OPENED
+    =================================================== */
 
-  function updateMusic() {
+    document.body.classList.add(
+        "page-locked"
+    );
 
-    if (!musicToggle) {
-      return;
+
+    /* ==================================================
+       NAME FROM URL
+       
+       Example:
+       
+       ?name=Amanda
+       
+       Result:
+       
+       HAPPY 31ST BIRTHDAY,
+       AMANDA
+    =================================================== */
+
+    const urlParams =
+        new URLSearchParams(
+            window.location.search
+        );
+
+    let friendName =
+        urlParams.get("name");
+
+
+    if (!friendName) {
+
+        friendName =
+            "BESTIE";
+
     }
 
-    if (musicPlaying) {
-      musicToggle.classList.remove("paused");
-    } else {
-      musicToggle.classList.add("paused");
+
+    try {
+
+        friendName =
+            decodeURIComponent(
+                friendName
+            );
+
+    } catch (error) {
+
+        friendName =
+            "BESTIE";
+
     }
 
-  }
+
+    friendName =
+        friendName
+            .replace(/\+/g, " ")
+            .trim()
+            .toUpperCase();
 
 
-  if (musicToggle) {
+    if (!friendName) {
 
-    musicToggle.addEventListener(
-      "click",
-      function () {
+        friendName =
+            "BESTIE";
 
-        if (!music) {
-          return;
+    }
+
+
+    const friendNameElement =
+        document.getElementById(
+            "friendName"
+        );
+
+    const letterNameElement =
+        document.getElementById(
+            "letterName"
+        );
+
+
+    if (friendNameElement) {
+
+        friendNameElement.textContent =
+            friendName;
+
+    }
+
+
+    if (letterNameElement) {
+
+        letterNameElement.textContent =
+            friendName;
+
+    }
+
+
+    /* ==================================================
+       ENVELOPE
+    =================================================== */
+
+    let envelopeOpened = false;
+
+
+    const openEnvelope = () => {
+
+        if (envelopeOpened) {
+            return;
+        }
+
+        envelopeOpened = true;
+
+
+        envelope.classList.add(
+            "open"
+        );
+
+
+        /* ----------------------------------------------
+           START MUSIC
+           
+           Browser may block autoplay,
+           but this is a user click,
+           so it normally works.
+        ---------------------------------------------- */
+
+        startMusic();
+
+
+        /* ----------------------------------------------
+           OPEN INVITATION
+        ---------------------------------------------- */
+
+        setTimeout(() => {
+
+            envelopeScreen.classList.add(
+                "is-hidden"
+            );
+
+            document.body.classList.remove(
+                "page-locked"
+            );
+
+            window.scrollTo({
+                top: 0,
+                behavior: "instant"
+            });
+
+        }, 1350);
+
+    };
+
+
+    if (envelope) {
+
+        envelope.addEventListener(
+            "click",
+            openEnvelope
+        );
+
+
+        envelope.addEventListener(
+            "keydown",
+            (event) => {
+
+                if (
+                    event.key === "Enter" ||
+                    event.key === " "
+                ) {
+
+                    event.preventDefault();
+
+                    openEnvelope();
+
+                }
+
+            }
+        );
+
+    }
+
+
+    /* ==================================================
+       MUSIC
+    =================================================== */
+
+    let musicPlaying = false;
+
+
+    const updateMusicButton = () => {
+
+        if (!musicButton) {
+            return;
         }
 
 
         if (musicPlaying) {
 
-          music.pause();
-
-          musicPlaying = false;
+            musicButton.classList.remove(
+                "is-muted"
+            );
 
         } else {
 
-          music.play()
-            .then(function () {
-
-              musicPlaying = true;
-
-            })
-            .catch(function () {
-
-              musicPlaying = false;
-
-            });
+            musicButton.classList.add(
+                "is-muted"
+            );
 
         }
 
-        updateMusic();
-
-      }
-    );
-
-  }
+    };
 
 
-  updateMusic();
+    const startMusic = () => {
+
+        if (!music) {
+            return;
+        }
 
 
-  /* =====================================================
-     SCROLL REVEAL
-  ====================================================== */
-
-  const revealItems =
-    document.querySelectorAll(".reveal");
+        music.volume = 0.28;
 
 
-  function reveal() {
+        const promise =
+            music.play();
 
-    revealItems.forEach(
-      function (item) {
-
-        const top =
-          item.getBoundingClientRect().top;
 
         if (
-          top <
-          window.innerHeight - 70
+            promise &&
+            typeof promise.then === "function"
         ) {
 
-          item.classList.add(
-            "visible"
-          );
+            promise
+                .then(() => {
+
+                    musicPlaying = true;
+
+                    updateMusicButton();
+
+                })
+                .catch(() => {
+
+                    musicPlaying = false;
+
+                    updateMusicButton();
+
+                });
 
         }
 
-      }
-    );
-
-  }
+    };
 
 
-  window.addEventListener(
-    "scroll",
-    reveal
-  );
+    const toggleMusic = () => {
 
-  reveal();
-
-
-  /* =====================================================
-     COUNTDOWN
-  ====================================================== */
-
-  let days = 31;
-  let hours = 8;
-  let minutes = 31;
-  let seconds = 31;
+        if (!music) {
+            return;
+        }
 
 
-  const dayElement =
-    document.getElementById("days");
+        if (music.paused) {
 
-  const hourElement =
-    document.getElementById("hours");
+            music.play()
+                .then(() => {
 
-  const minuteElement =
-    document.getElementById("minutes");
+                    musicPlaying = true;
 
-  const secondElement =
-    document.getElementById("seconds");
+                    updateMusicButton();
 
+                })
+                .catch(() => {
 
-  function updateCountdown() {
+                    musicPlaying = false;
 
-    seconds--;
+                    updateMusicButton();
 
+                });
 
-    if (seconds < 0) {
+        } else {
 
-      seconds = 59;
+            music.pause();
 
-      minutes--;
+            musicPlaying = false;
 
-    }
+            updateMusicButton();
 
+        }
 
-    if (minutes < 0) {
-
-      minutes = 59;
-
-      hours--;
-
-    }
+    };
 
 
-    if (hours < 0) {
+    if (musicButton) {
 
-      hours = 23;
-
-      days--;
-
-    }
-
-
-    if (days < 0) {
-
-      days = 31;
-
-      hours = 8;
-
-      minutes = 31;
-
-      seconds = 31;
-
-    }
-
-
-    if (dayElement) {
-
-      dayElement.textContent =
-        String(days)
-          .padStart(2, "0");
-
-    }
-
-    if (hourElement) {
-
-      hourElement.textContent =
-        String(hours)
-          .padStart(2, "0");
-
-    }
-
-    if (minuteElement) {
-
-      minuteElement.textContent =
-        String(minutes)
-          .padStart(2, "0");
-
-    }
-
-    if (secondElement) {
-
-      secondElement.textContent =
-        String(seconds)
-          .padStart(2, "0");
-
-    }
-
-  }
-
-
-  setInterval(
-    updateCountdown,
-    1000
-  );
-
-
-  /* =====================================================
-     RSVP FAKE INTERACTION
-  ====================================================== */
-
-  if (rsvpButton) {
-
-    rsvpButton.addEventListener(
-      "click",
-      function () {
-
-        alert(
-          "RSVP received. We can't wait to see you! ♡"
+        musicButton.addEventListener(
+            "click",
+            toggleMusic
         );
 
-      }
+    }
+
+
+    /* ==================================================
+       SCROLL REVEAL
+    =================================================== */
+
+    const revealElements =
+        document.querySelectorAll(
+            ".reveal"
+        );
+
+
+    const revealObserver =
+        new IntersectionObserver(
+            (entries) => {
+
+                entries.forEach(
+                    (entry) => {
+
+                        if (
+                            entry.isIntersecting
+                        ) {
+
+                            entry.target.classList.add(
+                                "visible"
+                            );
+
+                            revealObserver.unobserve(
+                                entry.target
+                            );
+
+                        }
+
+                    }
+                );
+
+            },
+            {
+                threshold: 0.12
+            }
+        );
+
+
+    revealElements.forEach(
+        (element) => {
+
+            revealObserver.observe(
+                element
+            );
+
+        }
     );
 
-  }
+
+    /* ==================================================
+       COUNTDOWN
+       
+       Wedding date:
+       12 September 2026
+    =================================================== */
+
+    const weddingDate =
+        new Date(
+            "September 12, 2026 16:00:00"
+        ).getTime();
 
 
-  /* =====================================================
-     CONFETTI
-  ====================================================== */
+    const daysElement =
+        document.getElementById("days");
 
-  let confettiStarted = false;
+    const hoursElement =
+        document.getElementById("hours");
+
+    const minutesElement =
+        document.getElementById("minutes");
+
+    const secondsElement =
+        document.getElementById("seconds");
 
 
-  function createConfetti() {
+    const pad =
+        (number) =>
+            String(number).padStart(
+                2,
+                "0"
+            );
 
-    if (confettiStarted) {
-      return;
+
+    const updateCountdown = () => {
+
+        const now =
+            Date.now();
+
+        const difference =
+            weddingDate - now;
+
+
+        if (
+            difference <= 0
+        ) {
+
+            if (daysElement) {
+                daysElement.textContent =
+                    "00";
+            }
+
+            if (hoursElement) {
+                hoursElement.textContent =
+                    "00";
+            }
+
+            if (minutesElement) {
+                minutesElement.textContent =
+                    "00";
+            }
+
+            if (secondsElement) {
+                secondsElement.textContent =
+                    "00";
+            }
+
+            return;
+
+        }
+
+
+        const days =
+            Math.floor(
+                difference /
+                (1000 * 60 * 60 * 24)
+            );
+
+
+        const hours =
+            Math.floor(
+                (
+                    difference /
+                    (1000 * 60 * 60)
+                ) % 24
+            );
+
+
+        const minutes =
+            Math.floor(
+                (
+                    difference /
+                    (1000 * 60)
+                ) % 60
+            );
+
+
+        const seconds =
+            Math.floor(
+                (
+                    difference /
+                    1000
+                ) % 60
+            );
+
+
+        if (daysElement) {
+
+            daysElement.textContent =
+                pad(days);
+
+        }
+
+
+        if (hoursElement) {
+
+            hoursElement.textContent =
+                pad(hours);
+
+        }
+
+
+        if (minutesElement) {
+
+            minutesElement.textContent =
+                pad(minutes);
+
+        }
+
+
+        if (secondsElement) {
+
+            secondsElement.textContent =
+                pad(seconds);
+
+        }
+
+    };
+
+
+    updateCountdown();
+
+
+    setInterval(
+        updateCountdown,
+        1000
+    );
+
+
+    /* ==================================================
+       RSVP
+    =================================================== */
+
+    if (rsvpButton) {
+
+        rsvpButton.addEventListener(
+            "click",
+            () => {
+
+                showPopup(
+                    "RSVP RECEIVED",
+                    "Thank you for confirming your attendance. We can't wait to celebrate with you. ♡"
+                );
+
+            }
+        );
+
     }
 
-    confettiStarted = true;
+
+    /* ==================================================
+       CONFETTI
+    =================================================== */
+
+    let confettiCreated = false;
 
 
-    const birthday =
-      document.getElementById("birthday");
-
-    if (!birthday) {
-      return;
-    }
-
-
-    const symbols = [
-      "✦",
-      "✧",
-      "♡",
-      "❀",
-      "✿",
-      "★",
-      "•"
+    const confettiSymbols = [
+        "✦",
+        "✧",
+        "♡",
+        "❀",
+        "✿",
+        "★",
+        "•"
     ];
 
 
-    for (
-      let i = 0;
-      i < 150;
-      i++
-    ) {
+    const createConfetti = () => {
 
-      const piece =
-        document.createElement("span");
+        if (
+            confettiCreated ||
+            !confetti
+        ) {
 
+            return;
 
-      piece.className =
-        "confetti-piece";
+        }
 
 
-      piece.textContent =
-        symbols[
-          Math.floor(
-            Math.random() *
-            symbols.length
-          )
-        ];
+        confettiCreated = true;
 
 
-      piece.style.left =
-        Math.random() * 100 + "%";
+        const total =
+            window.innerWidth < 600
+                ? 85
+                : 150;
 
 
-      piece.style.fontSize =
-        (
-          8 +
-          Math.random() * 17
-        ) + "px";
+        for (
+            let i = 0;
+            i < total;
+            i++
+        ) {
+
+            const piece =
+                document.createElement(
+                    "span"
+                );
 
 
-      piece.style.animationDuration =
-        (
-          3 +
-          Math.random() * 4
-        ) + "s";
+            piece.className =
+                "confetti-piece";
 
 
-      piece.style.animationDelay =
-        (
-          Math.random() * 2
-        ) + "s";
+            piece.textContent =
+                confettiSymbols[
+                    Math.floor(
+                        Math.random() *
+                        confettiSymbols.length
+                    )
+                ];
 
 
-      birthday.appendChild(piece);
+            piece.style.left =
+                (
+                    Math.random() *
+                    100
+                ) + "%";
+
+
+            piece.style.fontSize =
+                (
+                    8 +
+                    Math.random() * 17
+                ) + "px";
+
+
+            piece.style.opacity =
+                (
+                    .45 +
+                    Math.random() * .55
+                );
+
+
+            piece.style.setProperty(
+                "--drift",
+                (
+                    -100 +
+                    Math.random() * 200
+                ) + "px"
+            );
+
+
+            piece.style.animationDuration =
+                (
+                    3 +
+                    Math.random() * 4
+                ) + "s";
+
+
+            piece.style.animationDelay =
+                (
+                    Math.random() * 1.8
+                ) + "s";
+
+
+            confetti.appendChild(
+                piece
+            );
+
+        }
+
+    };
+
+
+    /* ==================================================
+       BIRTHDAY OBSERVER
+    =================================================== */
+
+    if (birthday) {
+
+        const birthdayObserver =
+            new IntersectionObserver(
+                (entries) => {
+
+                    entries.forEach(
+                        (entry) => {
+
+                            if (
+                                entry.isIntersecting
+                            ) {
+
+                                createConfetti();
+
+                                birthdayObserver.unobserve(
+                                    birthday
+                                );
+
+                            }
+
+                        }
+                    );
+
+                },
+                {
+                    threshold: .25
+                }
+            );
+
+
+        birthdayObserver.observe(
+            birthday
+        );
 
     }
 
-  }
+
+    /* ==================================================
+       POPUP
+    =================================================== */
+
+    const showPopup = (
+        title,
+        message
+    ) => {
+
+        if (!popup) {
+            return;
+        }
 
 
-  /* =====================================================
-     WATCH BIRTHDAY SECTION
-  ====================================================== */
+        const popupTitle =
+            popup.querySelector(
+                "h2"
+            );
 
-  const birthday =
-    document.getElementById("birthday");
+        const popupParagraphs =
+            popup.querySelectorAll(
+                "p:not(.eyebrow)"
+            );
 
 
-  if (birthday) {
+        if (popupTitle && title) {
 
-    const observer =
-      new IntersectionObserver(
-        function (entries) {
+            popupTitle.textContent =
+                title;
 
-          entries.forEach(
-            function (entry) {
+        }
 
-              if (
-                entry.isIntersecting
-              ) {
+
+        if (
+            message &&
+            popupParagraphs.length > 0
+        ) {
+
+            popupParagraphs[0].textContent =
+                message;
+
+        }
+
+
+        popup.classList.add(
+            "show"
+        );
+
+
+        popup.setAttribute(
+            "aria-hidden",
+            "false"
+        );
+
+    };
+
+
+    const hidePopup = () => {
+
+        if (!popup) {
+            return;
+        }
+
+
+        popup.classList.remove(
+            "show"
+        );
+
+
+        popup.setAttribute(
+            "aria-hidden",
+            "true"
+        );
+
+    };
+
+
+    if (celebrateButton) {
+
+        celebrateButton.addEventListener(
+            "click",
+            () => {
 
                 createConfetti();
 
-              }
+                showPopup(
+                    "Gotcha.",
+                    "Kalau kamu sampai sini, berarti prank-nya berhasil. 😭"
+                );
 
             }
-          );
+        );
 
-        },
-        {
-          threshold: 0.25
-        }
-      );
+    }
 
 
-    observer.observe(birthday);
+    if (lastMessage) {
 
-  }
+        lastMessage.addEventListener(
+            "click",
+            () => {
+
+                showPopup(
+                    "Gotcha.",
+                    "Kamu benar-benar membaca semuanya sampai akhir. 😂"
+                );
+
+            }
+        );
+
+    }
 
 
-  /* =====================================================
-     POPUP
-  ====================================================== */
+    if (closePopup) {
 
-  function showPopup() {
+        closePopup.addEventListener(
+            "click",
+            hidePopup
+        );
+
+    }
+
 
     if (popup) {
-      popup.classList.add("show");
+
+        popup.addEventListener(
+            "click",
+            (event) => {
+
+                if (
+                    event.target === popup
+                ) {
+
+                    hidePopup();
+
+                }
+
+            }
+        );
+
     }
 
-  }
 
+    document.addEventListener(
+        "keydown",
+        (event) => {
 
-  function hidePopup() {
+            if (
+                event.key === "Escape"
+            ) {
 
-    if (popup) {
-      popup.classList.remove("show");
-    }
+                hidePopup();
 
-  }
-
-
-  if (celebrateButton) {
-
-    celebrateButton.addEventListener(
-      "click",
-      function () {
-
-        createConfetti();
-
-        showPopup();
-
-      }
-    );
-
-  }
-
-
-  if (lastMessage) {
-
-    lastMessage.addEventListener(
-      "click",
-      function () {
-
-        showPopup();
-
-      }
-    );
-
-  }
-
-
-  if (closePopup) {
-
-    closePopup.addEventListener(
-      "click",
-      hidePopup
-    );
-
-  }
-
-
-  if (popup) {
-
-    popup.addEventListener(
-      "click",
-      function (event) {
-
-        if (
-          event.target === popup
-        ) {
-
-          hidePopup();
+            }
 
         }
-
-      }
     );
 
-  }
+
+    /* ==================================================
+       PREVENT BROKEN IMAGE VISUALS
+       
+       If an image doesn't exist,
+       placeholder remains visible.
+    =================================================== */
+
+    const galleryImages =
+        document.querySelectorAll(
+            ".gallery-item img"
+        );
 
 
-  document.addEventListener(
-    "keydown",
-    function (event) {
+    galleryImages.forEach(
+        (image) => {
 
-      if (
-        event.key === "Escape"
-      ) {
+            image.addEventListener(
+                "error",
+                () => {
 
-        hidePopup();
+                    image.classList.add(
+                        "image-missing"
+                    );
 
-      }
+                }
+            );
 
-    }
-  );
+        }
+    );
 
 
-  /* =====================================================
-     DEBUG
-  ====================================================== */
+    /* ==================================================
+       CONSOLE CHECK
+    =================================================== */
 
-  console.log(
-    "Luxury Wedding Prank loaded."
-  );
+    console.log(
+        "Luxury Wedding Prank 2.0 loaded."
+    );
 
-  console.log(
-    "Birthday target:",
-    friend
-  );
+    console.log(
+        "Birthday target:",
+        friendName
+    );
 
 });
