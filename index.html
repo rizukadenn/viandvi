@@ -1,831 +1,1061 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
 
-  <title>The Wedding of Rizuka</title>
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <meta
+        name="theme-color"
+        content="#eee7dc"
+    >
 
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=DM+Sans:wght@300;400;500&family=Italiana&family=Great+Vibes&display=swap" rel="stylesheet">
+    <title>The Wedding of Rizuka & Raka</title>
 
-  <link rel="stylesheet" href="style.css">
+    <!-- GOOGLE FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=DM+Sans:wght@300;400;500&family=Great+Vibes&family=Italiana&display=swap"
+        rel="stylesheet"
+    >
+
+    <link rel="stylesheet" href="style.css">
 </head>
 
-<body>
+<body class="page-locked">
 
-  <!-- =====================================================
-       LOADING
-  ====================================================== -->
+    <!-- ==================================================
+         LOADING SCREEN
+    =================================================== -->
 
-  <div id="loader">
-    <div class="loader-inner">
-      <div class="loader-monogram">R</div>
-      <div class="loader-line"></div>
-      <p>PREPARING YOUR INVITATION</p>
-    </div>
-  </div>
+    <div id="loader">
 
+        <div class="loader-content">
 
-  <!-- =====================================================
-       MUSIC
-  ====================================================== -->
+            <div class="loader-monogram">
+                R
+            </div>
 
-  <audio id="weddingMusic" loop preload="auto">
-    <source src="wedding.mp3" type="audio/mpeg">
-  </audio>
+            <div class="loader-divider"></div>
 
-  <button id="musicToggle" class="music-toggle" aria-label="Music">
-    <span></span>
-    <span></span>
-    <span></span>
-    <small>MUSIC</small>
-  </button>
-
-
-  <!-- =====================================================
-       ENVELOPE
-  ====================================================== -->
-
-  <section id="opening" class="opening">
-
-    <div class="opening-bg"></div>
-
-    <div class="opening-content">
-
-      <p class="opening-top">
-        A PRIVATE INVITATION
-      </p>
-
-      <div id="envelope" class="luxury-envelope">
-
-        <div class="envelope-back"></div>
-
-        <div class="envelope-letter">
-
-          <p>THE WEDDING OF</p>
-
-          <h2>
-            Rizuka
-            <span>&</span>
-            Raka
-          </h2>
-
-          <small>
-            31 · 08 · 2026
-          </small>
+            <p>
+                PREPARING YOUR INVITATION
+            </p>
 
         </div>
-
-        <div class="envelope-flap"></div>
-
-        <div class="envelope-front"></div>
-
-        <div class="wax">
-          R
-        </div>
-
-      </div>
-
-      <p class="open-hint">
-        OPEN THE INVITATION
-      </p>
 
     </div>
 
-  </section>
 
-
-  <!-- =====================================================
-       MAIN WEBSITE
-  ====================================================== -->
-
-  <main id="website">
-
-    <!-- HERO -->
-
-    <section class="hero">
-
-      <div class="hero-frame"></div>
-
-      <div class="hero-content">
-
-        <p class="eyebrow">
-          TOGETHER WITH THEIR FAMILIES
-        </p>
-
-        <h1>
-          Rizuka
-          <span>&</span>
-          Raka
-        </h1>
-
-        <div class="ornament">
-          <i></i>
-          <b>✦</b>
-          <i></i>
-        </div>
-
-        <p class="hero-date">
-          MONDAY · 31 AUGUST 2026
-        </p>
-
-        <p class="hero-place">
-          JAKARTA · INDONESIA
-        </p>
-
-        <a href="#welcome" class="hero-button">
-          VIEW INVITATION
-        </a>
-
-      </div>
-
-      <div class="hero-bottom">
-        SCROLL TO DISCOVER
-        <span>↓</span>
-      </div>
-
-    </section>
-
-
-    <!-- =================================================
-         WELCOME
-    ================================================== -->
-
-    <section id="welcome" class="welcome section">
-
-      <div class="narrow reveal">
-
-        <p class="small-title">
-          DEAR FAMILY & FRIENDS
-        </p>
-
-        <h2>
-          A celebration<br>
-          of love.
-        </h2>
-
-        <div class="gold-line"></div>
-
-        <p class="body-copy">
-          It is with immense joy that we invite
-          you to join us as we begin a beautiful
-          new chapter together.
-        </p>
-
-        <p class="handwritten">
-          We cannot wait to celebrate with you.
-        </p>
-
-      </div>
-
-    </section>
-
-
-    <!-- =================================================
-         DATE / VENUE
-    ================================================== -->
-
-    <section class="details section">
-
-      <div class="section-intro reveal">
-
-        <p class="small-title">
-          SAVE THE DATE
-        </p>
-
-        <h2>
-          The Day
-        </h2>
-
-        <div class="gold-line"></div>
-
-      </div>
-
-
-      <div class="details-grid">
-
-        <div class="detail reveal">
-
-          <span class="detail-number">
-            01
-          </span>
-
-          <p class="small-title">
-            CEREMONY
-          </p>
-
-          <h3>
-            16:00
-          </h3>
-
-          <p>
-            Monday<br>
-            31 August 2026
-          </p>
-
-        </div>
-
-
-        <div class="detail reveal">
-
-          <span class="detail-number">
-            02
-          </span>
-
-          <p class="small-title">
-            RECEPTION
-          </p>
-
-          <h3>
-            18:30
-          </h3>
-
-          <p>
-            An evening<br>
-            to remember
-          </p>
-
-        </div>
-
-
-        <div class="detail reveal">
-
-          <span class="detail-number">
-            03
-          </span>
-
-          <p class="small-title">
-            VENUE
-          </p>
-
-          <h3>
-            The Grand
-          </h3>
-
-          <p>
-            Jakarta<br>
-            Indonesia
-          </p>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- =================================================
-         GALLERY
-    ================================================== -->
-
-    <section class="gallery section">
-
-      <div class="section-intro reveal">
-
-        <p class="small-title">
-          OUR MEMORIES
-        </p>
-
-        <h2>
-          Moments<br>
-          We've Shared
-        </h2>
-
-        <div class="gold-line"></div>
-
-      </div>
-
-
-      <div class="photo-grid">
-
-        <div class="photo photo-one reveal">
-          <img
-            src="photo1.jpg"
-            alt="Our memory"
-            onerror="this.style.display='none'"
-          >
-
-          <div class="photo-fallback">
-            <span>R</span>
-          </div>
-
-          <p>
-            ONE BEAUTIFUL DAY
-          </p>
-        </div>
-
-
-        <div class="photo photo-two reveal">
-
-          <img
-            src="photo2.jpg"
-            alt="Our memory"
-            onerror="this.style.display='none'"
-          >
-
-          <div class="photo-fallback">
-            <span>♡</span>
-          </div>
-
-          <p>
-            LITTLE MOMENTS
-          </p>
-
-        </div>
-
-
-        <div class="photo photo-three reveal">
-
-          <img
-            src="photo3.jpg"
-            alt="Our memory"
-            onerror="this.style.display='none'"
-          >
-
-          <div class="photo-fallback">
-            <span>R</span>
-          </div>
-
-          <p>
-            FOREVER MEMORIES
-          </p>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- =================================================
-         STORY
-    ================================================== -->
-
-    <section class="story section">
-
-      <div class="section-intro reveal">
-
-        <p class="small-title">
-          OUR STORY
-        </p>
-
-        <h2>
-          It all started<br>
-          with a moment.
-        </h2>
-
-        <div class="gold-line"></div>
-
-      </div>
-
-
-      <div class="story-list">
-
-        <div class="story-row reveal">
-
-          <span>
-            2019
-          </span>
-
-          <div>
-            <h3>
-              The Beginning
-            </h3>
-
-            <p>
-              Two people crossed paths
-              without knowing what the
-              future had in store.
-            </p>
-          </div>
-
-        </div>
-
-
-        <div class="story-row reveal">
-
-          <span>
-            2021
-          </span>
-
-          <div>
-            <h3>
-              Getting Closer
-            </h3>
-
-            <p>
-              Conversations became longer,
-              memories became sweeter.
-            </p>
-          </div>
-
-        </div>
-
-
-        <div class="story-row reveal">
-
-          <span>
-            2024
-          </span>
-
-          <div>
-            <h3>
-              Something Special
-            </h3>
-
-            <p>
-              Somewhere along the way,
-              friendship became something
-              worth celebrating.
-            </p>
-          </div>
-
-        </div>
-
-
-        <div class="story-row suspicious reveal">
-
-          <span>
-            2026
-          </span>
-
-          <div>
-            <h3>
-              The Big Day
-            </h3>
-
-            <p>
-              And apparently...
-              something very important
-              is happening today.
-            </p>
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- =================================================
-         RSVP
-    ================================================== -->
-
-    <section class="rsvp section">
-
-      <div class="narrow reveal">
-
-        <p class="small-title">
-          KINDLY RESPOND
-        </p>
-
-        <h2>
-          Will you<br>
-          join us?
-        </h2>
-
-        <div class="gold-line"></div>
-
-        <p class="body-copy">
-          Your presence would make this
-          celebration even more meaningful.
-        </p>
-
-        <button id="rsvpButton" class="outline-button">
-          CONFIRM ATTENDANCE
-        </button>
-
-      </div>
-
-    </section>
-
-
-    <!-- =================================================
-         COUNTDOWN
-    ================================================== -->
-
-    <section class="countdown-section section">
-
-      <div class="narrow reveal">
-
-        <p class="small-title">
-          COUNTING DOWN
-        </p>
-
-        <h2>
-          Until the<br>
-          big moment.
-        </h2>
-
-        <div class="gold-line"></div>
-
-      </div>
-
-
-      <div class="countdown reveal">
-
-        <div>
-          <strong id="days">31</strong>
-          <span>DAYS</span>
-        </div>
-
-        <div>
-          <strong id="hours">08</strong>
-          <span>HOURS</span>
-        </div>
-
-        <div>
-          <strong id="minutes">31</strong>
-          <span>MINUTES</span>
-        </div>
-
-        <div>
-          <strong id="seconds">31</strong>
-          <span>SECONDS</span>
-        </div>
-
-      </div>
-
-
-      <p class="countdown-note">
-        Almost there.
-      </p>
-
-    </section>
-
-
-    <!-- =================================================
-         SOMETHING WRONG
-    ================================================== -->
-
-    <section id="suspicion" class="suspicion section">
-
-      <div class="suspicion-content">
-
-        <p class="small-title">
-          ONE LAST THING
-        </p>
-
-        <h2>
-          Wait.
-        </h2>
-
-        <div class="gold-line"></div>
-
-        <p>
-          Before you continue...
-        </p>
-
-        <p class="large-question">
-          Are you sure<br>
-          this is a wedding?
-        </p>
-
-        <span class="question-mark">
-          ?
+    <!-- ==================================================
+         BACKGROUND MUSIC
+    =================================================== -->
+
+    <audio
+        id="weddingMusic"
+        loop
+        preload="metadata"
+    >
+        <source
+            src="wedding.mp3"
+            type="audio/mpeg"
+        >
+    </audio>
+
+
+    <!-- MUSIC BUTTON -->
+
+    <button
+        id="musicButton"
+        class="music-button is-muted"
+        type="button"
+        aria-label="Toggle music"
+    >
+
+        <span class="music-bars">
+            <i></i>
+            <i></i>
+            <i></i>
+            <i></i>
         </span>
 
-      </div>
+        <span class="music-label">
+            MUSIC
+        </span>
+
+    </button>
+
+
+    <!-- ==================================================
+         ENVELOPE OPENING
+    =================================================== -->
+
+    <section
+        id="envelopeScreen"
+        class="envelope-screen"
+    >
+
+        <div class="envelope-background"></div>
+
+        <div class="envelope-intro">
+
+            <span class="envelope-kicker">
+                A PRIVATE INVITATION
+            </span>
+
+            <div
+                id="envelope"
+                class="envelope"
+                role="button"
+                tabindex="0"
+                aria-label="Open invitation"
+            >
+
+                <!-- BACK -->
+
+                <div class="envelope-back"></div>
+
+
+                <!-- LETTER -->
+
+                <div class="envelope-letter">
+
+                    <p>
+                        THE WEDDING OF
+                    </p>
+
+                    <h2>
+                        Rizuka
+                        <span>&</span>
+                        Raka
+                    </h2>
+
+                    <small>
+                        TOGETHER WITH THEIR FAMILIES
+                    </small>
+
+                </div>
+
+
+                <!-- FLAP -->
+
+                <div class="envelope-flap"></div>
+
+
+                <!-- FRONT -->
+
+                <div class="envelope-front"></div>
+
+
+                <!-- WAX SEAL -->
+
+                <div class="wax-seal">
+                    R
+                </div>
+
+            </div>
+
+            <p class="envelope-hint">
+                CLICK TO OPEN
+            </p>
+
+        </div>
 
     </section>
 
 
-    <!-- =================================================
-         PLOT TWIST
-    ================================================== -->
+    <!-- ==================================================
+         MAIN INVITATION
+    =================================================== -->
 
-    <section id="plotTwist" class="plot-twist">
+    <main id="invitation">
 
-      <div class="twist-content">
 
-        <p>
-          THERE'S SOMETHING<br>
-          WE FORGOT TO TELL YOU.
-        </p>
+        <!-- ==================================================
+             HERO
+        =================================================== -->
 
-        <div class="twist-line"></div>
+        <section class="hero">
 
-        <h2>
-          THERE IS<br>
-          NO WEDDING.
-        </h2>
+            <div class="hero-border"></div>
 
-        <div class="twist-small">
-          ↓
+            <div class="hero-content">
+
+                <p class="hero-kicker">
+                    TOGETHER WITH THEIR FAMILIES
+                </p>
+
+                <h1 class="hero-names">
+
+                    <span>
+                        Rizuka
+                    </span>
+
+                    <b>
+                        &
+                    </b>
+
+                    <span>
+                        Raka
+                    </span>
+
+                </h1>
+
+                <div class="hero-ornament">
+
+                    <span></span>
+
+                    <b>✦</b>
+
+                    <span></span>
+
+                </div>
+
+                <p class="hero-date">
+                    SATURDAY · 12 SEPTEMBER 2026
+                </p>
+
+                <p class="hero-location">
+                    JAKARTA · INDONESIA
+                </p>
+
+                <a
+                    href="#welcome"
+                    class="hero-cta"
+                >
+                    VIEW INVITATION
+                </a>
+
+            </div>
+
+            <div class="hero-scroll">
+
+                <span>
+                    SCROLL TO DISCOVER
+                </span>
+
+                <b>
+                    ↓
+                </b>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==================================================
+             WELCOME
+        =================================================== -->
+
+        <section
+            id="welcome"
+            class="section welcome"
+        >
+
+            <div class="content-narrow reveal">
+
+                <p class="eyebrow">
+                    DEAR FAMILY & FRIENDS
+                </p>
+
+                <h2 class="section-title">
+                    A celebration<br>
+                    of love.
+                </h2>
+
+                <div class="gold-divider"></div>
+
+                <p class="paragraph">
+                    With hearts full of happiness,
+                    we invite you to celebrate the
+                    beginning of a beautiful new
+                    chapter in our lives.
+                </p>
+
+                <p class="script-line">
+                    We would be honored to have you with us.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==================================================
+             DATE
+        =================================================== -->
+
+        <section class="section details">
+
+            <div class="section-heading reveal">
+
+                <p class="eyebrow">
+                    SAVE THE DATE
+                </p>
+
+                <h2 class="section-title">
+                    The Day
+                </h2>
+
+                <div class="gold-divider"></div>
+
+            </div>
+
+
+            <div class="details-grid">
+
+                <article class="detail-card reveal">
+
+                    <span class="detail-index">
+                        I
+                    </span>
+
+                    <p class="eyebrow">
+                        CEREMONY
+                    </p>
+
+                    <h3>
+                        16:00
+                    </h3>
+
+                    <p>
+                        Saturday<br>
+                        12 September 2026
+                    </p>
+
+                </article>
+
+
+                <article class="detail-card reveal">
+
+                    <span class="detail-index">
+                        II
+                    </span>
+
+                    <p class="eyebrow">
+                        RECEPTION
+                    </p>
+
+                    <h3>
+                        18:30
+                    </h3>
+
+                    <p>
+                        Dinner & celebration<br>
+                        to follow
+                    </p>
+
+                </article>
+
+
+                <article class="detail-card reveal">
+
+                    <span class="detail-index">
+                        III
+                    </span>
+
+                    <p class="eyebrow">
+                        VENUE
+                    </p>
+
+                    <h3>
+                        The Grand
+                    </h3>
+
+                    <p>
+                        Jakarta<br>
+                        Indonesia
+                    </p>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==================================================
+             DRESS CODE
+        =================================================== -->
+
+        <section class="section dress-code">
+
+            <div class="dress-inner reveal">
+
+                <p class="eyebrow">
+                    DRESS CODE
+                </p>
+
+                <h2 class="section-title">
+                    Timeless<br>
+                    Elegance
+                </h2>
+
+                <div class="gold-divider"></div>
+
+                <p class="paragraph">
+                    We invite our guests to dress in
+                    elegant, timeless tones for an
+                    unforgettable evening.
+                </p>
+
+                <div class="dress-colors">
+
+                    <span class="tone tone-1"></span>
+                    <span class="tone tone-2"></span>
+                    <span class="tone tone-3"></span>
+                    <span class="tone tone-4"></span>
+
+                </div>
+
+                <p class="dress-note">
+                    Ivory · Champagne · Beige · Black
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==================================================
+             GALLERY
+        =================================================== -->
+
+        <section class="section gallery">
+
+            <div class="section-heading reveal">
+
+                <p class="eyebrow">
+                    OUR MEMORIES
+                </p>
+
+                <h2 class="section-title">
+                    Moments<br>
+                    We've Shared
+                </h2>
+
+                <div class="gold-divider"></div>
+
+            </div>
+
+
+            <div class="gallery-grid">
+
+
+                <!-- PHOTO 1 -->
+
+                <figure class="gallery-item gallery-large reveal">
+
+                    <img
+                        src="photo1.jpg"
+                        alt="Wedding memory"
+                        onerror="this.classList.add('image-missing')"
+                    >
+
+                    <div class="gallery-placeholder">
+                        <span>
+                            R
+                        </span>
+                    </div>
+
+                    <figcaption>
+                        ONE BEAUTIFUL DAY
+                    </figcaption>
+
+                </figure>
+
+
+                <!-- PHOTO 2 -->
+
+                <figure class="gallery-item gallery-small reveal">
+
+                    <img
+                        src="photo2.jpg"
+                        alt="Wedding memory"
+                        onerror="this.classList.add('image-missing')"
+                    >
+
+                    <div class="gallery-placeholder">
+                        <span>
+                            ♡
+                        </span>
+                    </div>
+
+                    <figcaption>
+                        LITTLE MOMENTS
+                    </figcaption>
+
+                </figure>
+
+
+                <!-- PHOTO 3 -->
+
+                <figure class="gallery-item gallery-wide reveal">
+
+                    <img
+                        src="photo3.jpg"
+                        alt="Wedding memory"
+                        onerror="this.classList.add('image-missing')"
+                    >
+
+                    <div class="gallery-placeholder">
+                        <span>
+                            R & R
+                        </span>
+                    </div>
+
+                    <figcaption>
+                        FOREVER MEMORIES
+                    </figcaption>
+
+                </figure>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==================================================
+             STORY
+        =================================================== -->
+
+        <section class="section story">
+
+            <div class="section-heading reveal">
+
+                <p class="eyebrow">
+                    OUR STORY
+                </p>
+
+                <h2 class="section-title">
+                    A story worth<br>
+                    remembering.
+                </h2>
+
+                <div class="gold-divider"></div>
+
+            </div>
+
+
+            <div class="story-list">
+
+                <div class="story-item reveal">
+
+                    <span>
+                        2019
+                    </span>
+
+                    <div>
+
+                        <h3>
+                            The Beginning
+                        </h3>
+
+                        <p>
+                            A simple meeting became
+                            the beginning of countless
+                            memories.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="story-item reveal">
+
+                    <span>
+                        2021
+                    </span>
+
+                    <div>
+
+                        <h3>
+                            Getting Closer
+                        </h3>
+
+                        <p>
+                            Conversations became longer,
+                            laughter became easier,
+                            and the memories kept growing.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="story-item reveal">
+
+                    <span>
+                        2024
+                    </span>
+
+                    <div>
+
+                        <h3>
+                            Something Special
+                        </h3>
+
+                        <p>
+                            Somewhere along the way,
+                            ordinary days started feeling
+                            a little more special.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="story-item reveal">
+
+                    <span>
+                        2026
+                    </span>
+
+                    <div>
+
+                        <h3>
+                            The Big Day
+                        </h3>
+
+                        <p>
+                            And apparently...
+                            something very important
+                            is happening.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==================================================
+             RSVP
+        =================================================== -->
+
+        <section class="section rsvp">
+
+            <div class="content-narrow reveal">
+
+                <p class="eyebrow">
+                    KINDLY RESPOND
+                </p>
+
+                <h2 class="section-title">
+                    Will you<br>
+                    join us?
+                </h2>
+
+                <div class="gold-divider"></div>
+
+                <p class="paragraph">
+                    Your presence would make this
+                    special celebration even more
+                    meaningful.
+                </p>
+
+                <button
+                    id="rsvpButton"
+                    class="outline-button"
+                    type="button"
+                >
+                    CONFIRM ATTENDANCE
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==================================================
+             COUNTDOWN
+        =================================================== -->
+
+        <section class="section countdown-section">
+
+            <div class="section-heading reveal">
+
+                <p class="eyebrow">
+                    COUNTING DOWN
+                </p>
+
+                <h2 class="section-title">
+                    Until the<br>
+                    big moment.
+                </h2>
+
+                <div class="gold-divider"></div>
+
+            </div>
+
+
+            <div class="countdown reveal">
+
+                <div>
+                    <strong id="days">
+                        00
+                    </strong>
+
+                    <span>
+                        DAYS
+                    </span>
+                </div>
+
+
+                <div>
+                    <strong id="hours">
+                        00
+                    </strong>
+
+                    <span>
+                        HOURS
+                    </span>
+                </div>
+
+
+                <div>
+                    <strong id="minutes">
+                        00
+                    </strong>
+
+                    <span>
+                        MINUTES
+                    </span>
+                </div>
+
+
+                <div>
+                    <strong id="seconds">
+                        00
+                    </strong>
+
+                    <span>
+                        SECONDS
+                    </span>
+                </div>
+
+            </div>
+
+            <p class="countdown-script">
+                Almost there.
+            </p>
+
+        </section>
+
+
+        <!-- ==================================================
+             SUSPICION
+        =================================================== -->
+
+        <section
+            id="suspicion"
+            class="section suspicion"
+        >
+
+            <div class="suspicion-content reveal">
+
+                <p class="eyebrow">
+                    ONE LAST THING
+                </p>
+
+                <h2>
+                    Wait.
+                </h2>
+
+                <div class="gold-divider"></div>
+
+                <p class="suspicion-normal">
+                    Before you continue...
+                </p>
+
+                <p class="suspicion-question">
+                    Are you sure<br>
+                    this is a wedding?
+                </p>
+
+                <span class="question-symbol">
+                    ?
+                </span>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==================================================
+             PLOT TWIST
+        =================================================== -->
+
+        <section
+            id="plotTwist"
+            class="plot-twist"
+        >
+
+            <div class="twist-noise"></div>
+
+            <div class="twist-content">
+
+                <p class="twist-kicker">
+                    THERE'S SOMETHING<br>
+                    WE FORGOT TO TELL YOU
+                </p>
+
+                <div class="twist-divider"></div>
+
+                <h2>
+                    THERE IS<br>
+                    NO WEDDING.
+                </h2>
+
+                <p class="twist-sub">
+                    Keep scrolling.
+                </p>
+
+                <span class="twist-arrow">
+                    ↓
+                </span>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==================================================
+             BIRTHDAY REVEAL
+        =================================================== -->
+
+        <section
+            id="birthday"
+            class="birthday"
+        >
+
+            <div class="birthday-light"></div>
+
+            <div
+                id="confetti"
+                class="confetti-container"
+            ></div>
+
+            <div class="birthday-content">
+
+                <p class="birthday-kicker">
+                    SURPRISE!
+                </p>
+
+                <h1>
+                    HAPPY
+                </h1>
+
+                <div class="age-number">
+                    31
+                </div>
+
+                <h2>
+                    BIRTHDAY
+                </h2>
+
+                <div class="birthday-stars">
+                    ✦ &nbsp; ✧ &nbsp; ✦
+                </div>
+
+                <p class="birthday-script">
+                    Happy 31st Birthday,
+                </p>
+
+                <h3 id="friendName">
+                    BESTIE
+                </h3>
+
+                <p class="birthday-message">
+                    You really thought this was a wedding. 😂
+                </p>
+
+                <button
+                    id="celebrateButton"
+                    class="birthday-button"
+                    type="button"
+                >
+                    CELEBRATE 🎉
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==================================================
+             BIRTHDAY LETTER
+        =================================================== -->
+
+        <section
+            class="section birthday-letter"
+        >
+
+            <div class="letter-wrapper reveal">
+
+                <p class="eyebrow">
+                    A LITTLE MESSAGE
+                </p>
+
+                <h2 class="section-title">
+                    For your<br>
+                    31st chapter.
+                </h2>
+
+                <div class="gold-divider"></div>
+
+
+                <div class="letter-paper">
+
+                    <p>
+                        Dear
+                        <strong id="letterName">
+                            Bestie
+                        </strong>,
+                    </p>
+
+                    <p>
+                        Selamat ulang tahun yang ke-31! 🎂
+                    </p>
+
+                    <p>
+                        Semoga di usia yang baru ini,
+                        hidupmu dipenuhi banyak hal baik,
+                        banyak tawa, banyak kesempatan,
+                        dan banyak alasan untuk bahagia.
+                    </p>
+
+                    <p>
+                        Semoga semua hal yang sedang
+                        kamu perjuangkan perlahan
+                        menemukan jalannya.
+                    </p>
+
+                    <p>
+                        Thank you for being one of those
+                        people who make ordinary days
+                        feel a little more special.
+                    </p>
+
+                    <p class="pink-message">
+                        And yes...
+                    </p>
+
+                    <p class="pink-message">
+                        I'm sorry for making you scroll
+                        through an entire wedding invitation
+                        just to say this. 😭
+                    </p>
+
+                    <p>
+                        With love,
+                    </p>
+
+                    <p class="signature">
+                        Rizuka ♡
+                    </p>
+
+                </div>
+
+
+                <button
+                    id="lastMessage"
+                    class="outline-button"
+                    type="button"
+                >
+                    ONE LAST SURPRISE
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==================================================
+             FOOTER
+        =================================================== -->
+
+        <footer>
+
+            <div class="footer-monogram">
+                R
+            </div>
+
+            <p>
+                MADE WITH LOVE, CHAOS & A LITTLE DECEPTION
+            </p>
+
+            <small>
+                2026 · THE END
+            </small>
+
+        </footer>
+
+    </main>
+
+
+    <!-- ==================================================
+         POPUP
+    =================================================== -->
+
+    <div
+        id="popup"
+        class="popup"
+        aria-hidden="true"
+    >
+
+        <div class="popup-box">
+
+            <button
+                id="closePopup"
+                class="close-popup"
+                type="button"
+            >
+                ×
+            </button>
+
+            <span class="popup-star">
+                ✦
+            </span>
+
+            <p class="eyebrow">
+                P.S.
+            </p>
+
+            <h2>
+                Gotcha.
+            </h2>
+
+            <p>
+                Kalau kamu sampai sini,
+                berarti prank-nya berhasil. 😭
+            </p>
+
+            <p>
+                Sekarang baru boleh ketawa.
+            </p>
+
+            <strong>
+                HAPPY 31ST BIRTHDAY! 🎂
+            </strong>
+
         </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- =================================================
-         BIRTHDAY REVEAL
-    ================================================== -->
-
-    <section id="birthday" class="birthday">
-
-      <div class="birthday-glow"></div>
-
-      <div id="confetti"></div>
-
-      <div class="birthday-content">
-
-        <p class="birthday-overline">
-          SURPRISE!
-        </p>
-
-        <h1>
-          HAPPY
-        </h1>
-
-        <div class="age">
-          31
-        </div>
-
-        <h2>
-          BIRTHDAY
-        </h2>
-
-        <div class="birthday-ornament">
-          ✦ &nbsp; ✧ &nbsp; ✦
-        </div>
-
-        <p class="birthday-script">
-          Happy 31st Birthday,
-        </p>
-
-        <h3 id="friendName">
-          BESTIE
-        </h3>
-
-        <p class="birthday-sub">
-          You really thought this was a wedding. 😂
-        </p>
-
-        <button id="celebrateButton" class="birthday-button">
-          CELEBRATE 🎉
-        </button>
-
-      </div>
-
-    </section>
-
-
-    <!-- =================================================
-         BIRTHDAY LETTER
-    ================================================== -->
-
-    <section class="birthday-letter section">
-
-      <div class="letter-container reveal">
-
-        <p class="small-title">
-          A LITTLE MESSAGE
-        </p>
-
-        <h2>
-          For your<br>
-          31st chapter.
-        </h2>
-
-        <div class="gold-line"></div>
-
-
-        <div class="letter-paper">
-
-          <p>
-            Dear
-            <strong id="letterName">
-              Bestie
-            </strong>,
-          </p>
-
-          <p>
-            Selamat ulang tahun yang ke-31! 🎂
-          </p>
-
-          <p>
-            Semoga di usia yang baru ini,
-            hidupmu dipenuhi banyak hal
-            baik yang bahkan tidak pernah
-            kamu sangka akan datang.
-          </p>
-
-          <p>
-            Semoga langkahmu selalu dimudahkan,
-            impianmu satu per satu menjadi nyata,
-            dan kamu selalu punya alasan untuk
-            tersenyum.
-          </p>
-
-          <p>
-            Thank you for being one of those
-            people who make ordinary days
-            feel a little more special.
-          </p>
-
-          <p class="pink-text">
-            And yes...
-          </p>
-
-          <p class="pink-text">
-            I'm sorry for making you scroll
-            through an entire wedding invitation
-            just to say this. 😭
-          </p>
-
-          <p>
-            With love,
-          </p>
-
-          <p class="signature">
-            Rizuka ♡
-          </p>
-
-        </div>
-
-
-        <button id="lastMessage" class="outline-button">
-          ONE LAST SURPRISE
-        </button>
-
-      </div>
-
-    </section>
-
-
-    <!-- =================================================
-         FOOTER
-    ================================================== -->
-
-    <footer>
-
-      <div class="footer-monogram">
-        R
-      </div>
-
-      <p>
-        MADE WITH LOVE, CHAOS & A LITTLE DECEPTION
-      </p>
-
-      <small>
-        2026 · THE END
-      </small>
-
-    </footer>
-
-  </main>
-
-
-  <!-- =====================================================
-       POPUP
-  ====================================================== -->
-
-  <div id="popup" class="popup">
-
-    <div class="popup-box">
-
-      <button id="closePopup" class="close-popup">
-        ×
-      </button>
-
-      <div class="popup-icon">
-        ✦
-      </div>
-
-      <p class="small-title">
-        P.S.
-      </p>
-
-      <h2>
-        Gotcha. 😭
-      </h2>
-
-      <p>
-        Kalau kamu sampai sini,
-        berarti prank-nya berhasil.
-      </p>
-
-      <p>
-        Sekarang nggak ada lagi
-        plot twist.
-      </p>
-
-      <strong>
-        HAPPY 31ST BIRTHDAY! 🎂
-      </strong>
 
     </div>
 
-  </div>
 
-
-  <script src="script.js"></script>
+    <script src="script.js"></script>
 
 </body>
 </html>
